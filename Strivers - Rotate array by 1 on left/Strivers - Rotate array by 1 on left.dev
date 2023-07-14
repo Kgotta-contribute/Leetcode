@@ -1,6 +1,6 @@
 [Project]
-FileName=Solution.dev
-Name=Remove_arry_duplicates
+FileName=Strivers - Rotate array by 1 on left.dev
+Name=Strivers - Rotate array by 1 on left
 Type=1
 Ver=2
 ObjFiles=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=main.cpp
+FileName=Solution.cpp
 CompileCpp=1
 Folder=
 Compile=1
