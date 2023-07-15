@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            function Arithmetic()
+            {
+                const a = parseInt(document.getElementById("num1").value);
+                const b = parseInt(document.getElementById("num2").value);
+                let output = "";
+                if(a==="" || b==="")
+                {
+                    output = "<span style = 'color: green;'>Please Enter your numbers: </span>";
+                }
+                else
+                {
+                    const num1 = a;
+                    const num2 = b;
+                    output = "Addition : " + (num1 + num2) + "<br>";
+                    output += "Subtraction : " + (num1 - num2) + "<br>";
+                    output += "Multiplication : " + (num1 * num2) + "<br>";
+                    output += "Division : " + (num1 / num2) + "<br>";
+                }
+                document.getElementById("output").innerHTML = output;
+            }
+        </script>
+        <label>Enter two numbers: </label>
+        <input type="text" id = "num1">
+        <input type = "text" id = "num2">
+        <button onclick="Arithmetic()" >Click Here</button>
+        <p id = "output"></p>
+    </body>
+</html>

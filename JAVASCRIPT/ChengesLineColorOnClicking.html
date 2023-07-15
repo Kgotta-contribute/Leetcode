@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <title>Text Color Changes</title>
+</head>
+<body>
+
+    <button id="btn">Click this button</button>
+
+    <div> This line is written in Blue Color
+        <br>Is it Correct !!<br> &nbsp </div>
+    <div id="ele2"> Let's Check!!</div>
+
+    <script>
+        //.click. event listener is function added to the button & is invoked everytime the button s clicked
+        const btn = document.getElementById('btn');
+
+        btn.addEventListener('click', function onClick(event)
+        {   
+            //Changes color globally
+            document.body.style.color = 'darkgreen';
+
+            // Changes text color for clicked ele only
+            //event.target.style.color = 'salmon';
+            const ele2 = document.getElementById('ele2');
+            ele2.style.color = 'salmon';
+        });
+        //Changes another ele text color
+        const ele2 = document.getElementById('ele2');
+
+        btn.addEventListener('click', function onClick(event)
+        {   
+            const ele2 = document.getElementById('ele2');
+            ele2.style.color = 'salmon';
+        });
+    </script>
+</body> 
+</html>   

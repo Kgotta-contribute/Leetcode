@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Indian States</title>
+        <script>
+            function Function1()
+            {
+                var selected = document.getElementById("state");
+                //THE BELOW LINE IS EVERYTHING
+                var selectedState = selected.options[selected.selectedIndex].text ; 
+                document.getElementById("output").textContent = "Selected State: " + selectedState;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>Select States to Display: </h1>
+        <label>Select a state </label>
+        <select id = "state">
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Gujrat">Gujrat</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Assam">Assam</option>
+        </select>
+        <br>
+        <button onclick="Function1()">Click me</button>
+        <p id = "output"></p>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Factorial of Number given</title>
+    </head>
+    <body>
+        <div>
+            <input type="number" id="input-num" placeholder="Enter a number" />
+            <button id="btn">Find Factorial</button>
+        </div>
+        <div id="output"></div>
+
+          <script>
+            const factorial = (num) => {
+              if (num < 0) {
+                return "Make the number positive to find factorial";
+              } else if (num === 0 || num === 1) {
+                return 1;
+              } else {
+                return num * factorial(num - 1);
+              }
+            };
+      
+            const inputNum = document.getElementById("input-num");
+            const FactBtn = document.getElementById("btn");
+      
+            FactBtn.addEventListener("click", () =>
+            {
+              const num = inputNum.value;
+              const FactNum = factorial(num);                                                     
+              document.getElementById("output").textContent = `The Factorial of number is: ${FactNum}`;
+              
+            });
+          </script>
+    </body>
+</html>
