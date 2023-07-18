@@ -1,3 +1,65 @@
+#include <iostream>
+#include <unordered_set>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+string twoSumExists(int arr[], int n, int target) {
+    unordered_set<int> numSet;
+
+    for (int i = 0; i < n; i++) {
+        int complement = target - arr[i];
+        if (numSet.find(complement) != numSet.end()) {
+            return "YES";
+        }
+        numSet.insert(arr[i]);
+    }
+
+    return "NO";
+}
+
+vector<int> twoSumIndices(int arr[], int n, int target) {
+    unordered_map<int, int> numIndices;
+
+    for (int i = 0; i < n; i++) {
+        int complement = target - arr[i];
+        if (numIndices.find(complement) != numIndices.end()) {
+            return {numIndices[complement], i};
+        }
+        numIndices[arr[i]] = i;
+    }
+
+    return {-1, -1};
+}
+
+int main() {
+    int arr[] = {2, 6, 5, 8, 11};
+    int target = 14;
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Variant 1: Two-Sum Exists?" << endl;
+    cout << twoSumExists(arr, n, target) << endl;
+
+    cout << "\nVariant 2: Two-Sum Indices" << endl;
+    vector<int> indices = twoSumIndices(arr, n, target);
+    if (indices[0] == -1 && indices[1] == -1) {
+        cout << "NO" << endl;
+    } else {
+        cout << "YES" << endl;
+        cout << indices[0] << " " << indices[1] << endl;
+    }
+
+    return 0;
+}
+
+
+// numSet.find(complement): The find() function is used to search for a specific element (complement) in the numSet unordered set. If the element is found, it returns an iterator pointing to that element; otherwise, it returns an iterator pointing to the end of the set.
+
+// numSet.endJ(): The end() function returns an iterator pointing to the end of the set. It represents a position just past the last element in the set.
+
+// numSet.find(complement) != numSet.end(): This expression compares the iterator returned by find(complement) with the iterator returned by end(). If they are not equal, it means that the element (complement) was found in the set.
+
+
 //VERSION 1
 
 // #include <iostream>

@@ -3,13 +3,13 @@ using namespace std;
 
 int getLongestSubarray(vector<int>& a, int k) 
 {
-    int n = a.size(); 
+    int n = a.size();   //n=3
 
     int len = 0;
     for (int i = 0; i < n; i++) 
     { 
         int s = 0;
-        for (int j = i; j < n; j++) 
+        for (int j = i; j < n; j++)     //j=0
         { 
             s += a[j];
 

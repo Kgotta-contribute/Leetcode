@@ -2,11 +2,11 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-int findRotationIndex(vector<int> &arr) 
+int findRotationIndex(vector<int> &arr) // Pass by reference
 {
     int size = arr.size();
-    int minValue = INT_MAX;
-    int rotationIndex = -1;
+    int minValue = INT_MAX;         // Infinity
+    int rotationIndex = -1;         // Take care & do not forget
     for (int i = 0; i < size; i++) 
     {
         if (arr[i] < minValue) 

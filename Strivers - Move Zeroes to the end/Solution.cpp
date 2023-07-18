@@ -42,3 +42,8 @@ int main()
 	
 	return 0;
 }
+/*
+The auto &it : ans
+is a range based loop used to iterate over the vector answer
+auto &it declares a reference variable 'it' that points to each element of the vector answer
+*/
