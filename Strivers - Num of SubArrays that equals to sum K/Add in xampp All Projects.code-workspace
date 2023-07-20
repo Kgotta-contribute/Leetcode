@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../Add in xampp All Projects"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.rmd": "markdown",
+			"iostream": "cpp"
+		}
+	}
+}
