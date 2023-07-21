@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>String being returned in Alphabetical Order</title>
+    </head>
+    <body>
+        <h1>Sort String Alphabetically</h1>
+        <input type="text" id="InpString" placeholder="Enter a string! ">
+        <button id="sortButton">Sort</button>
+        <p id="sortedResult"></p>
+
+        <script>
+            document.getElementById("sortButton").addEventListener("click", function()
+            {
+                var InpString = document.getElementById("InpString").value;
+                var charArray = InpString.split('').sort().join('');
+                document.getElementById("sortedResult").textContent = "Sorted string: " + charArray;
+                // var charArray = InpString.split('');
+                // charArray.sort();
+                // var sortedString = charArray.join('');
+                // document.getElementById("sortedResult").textContent = "Sorted string: " + sortedString;
+            });
+        </script>
+    </body>
+</html>

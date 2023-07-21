@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vowel Count</title>
+    </head>
+    <body>
+        <script>
+            function countVowels()
+            {
+                const UserInp = prompt("Enter a string");
+                const FinalInp = UserInp.toLowerCase();
+                const vowels = ['a', 'e', 'i', 'o', 'u'];
+                let count = 0;
+                for(let i=0; i<FinalInp.length; i++)
+                {
+                    if(vowels.includes(FinalInp[i]))
+                    {
+                        count ++;
+                    }
+                }
+                alert('The present number of vowels are : ' + count);
+            }
+            countVowels();
+        </script>
+    </body>
+</html>

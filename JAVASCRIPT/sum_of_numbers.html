@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sum Calculator</title>
+    </head>
+    <body>
+        <script>
+            function Sum()
+            {
+                var n1 = prompt("Enter 1st num: ");
+                var n2 = prompt("Enter 2nd num: ");
+                n1 = parseFloat(n1);
+                n2 = parseFloat(n2);
+                //Checking if num1 & nu2 are valid numbers b4 procedding(it takes a value as an argument & returns true if not valid)
+                // So if num1 is a valid num then isNaN is false & !isNaN will be true 
+                if(!isNaN(n1) && !isNaN(n2))
+                {
+                    var sum = n1 + n2;
+                    alert("The sum of " + n1 + " and " + n2 + " is: " + sum);
+                }
+                else{
+                    alert("invalid Input");
+                }
+            }
+            Sum();
+        </script>
+    </body>
+</html>
