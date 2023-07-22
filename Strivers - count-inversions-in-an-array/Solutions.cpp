@@ -3,12 +3,15 @@
 
 using namespace std;
 
-int countInversionsBruteForce(vector<int>& arr) {
+int countInversionsBruteForce(vector<int>& arr)
+{
     int count = 0;
-    int n = arr.size();
-
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = i + 1; j < n; j++) {
+    int n = arr.size();         // 1    2   3   4   5   // i
+                                //      1   2   3   4   // j             ++
+    for (int i = 0; i < n - 1; i++)
+        {
+        for (int j = i + 1; j < n; j++)
+        {
             if (arr[j] < arr[i])
                 count++;
         }

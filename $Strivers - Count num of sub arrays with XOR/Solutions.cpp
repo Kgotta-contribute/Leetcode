@@ -2,7 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int subarraysWithXorK(vector<int> a, int k) {
+int subarraysWithXorK(vector<int> a, int k)
+{
     int n = a.size(); //size of the given array.
     int xr = 0;
     map<int, int> mpp; //declaring the map.
