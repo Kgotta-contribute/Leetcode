@@ -49,3 +49,32 @@ int main() {
 
     return 0;
 }
+
+
+//EASIER & O9n) time complexity
+// #include <iostream>
+// #include <vector>
+
+// int searchInRotatedArray(const std::vector<int>& nums, int target) {
+//     for (int i = 0; i < nums.size(); ++i) {
+//         if (nums[i] == target) {
+//             return i; // Found the target element at index i
+//         }
+//     }
+//     return -1; // Element not found in the array
+// }
+
+// int main() {
+//     std::vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
+//     int target = 0;
+
+//     int result = searchInRotatedArray(nums, target);
+
+//     if (result != -1) {
+//         std::cout << "Element " << target << " found at index " << result << std::endl;
+//     } else {
+//         std::cout << "Element not found in the array." << std::endl;
+//     }
+
+//     return 0;
+// }
