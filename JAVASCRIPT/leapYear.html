@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leap Years Finder</title>
+</head>
+<body>
+    <h1>Leap Years Finder</h1>
+    <p>Enter the range of years:</p>
+    <label for="startYear">Start Year:</label>
+    <input type="number" id="startYear">
+    <label for="endYear">End Year:</label>
+    <input type="number" id="endYear">
+    <button onclick="findLeapYears()">Find Leap Years</button>
+
+    <div id="result">
+        <!-- The leap years will be displayed here -->
+    </div>
+
+    <script>
+        function findLeapYears() {
+            var startYear = parseInt(document.getElementById('startYear').value);
+            var endYear = parseInt(document.getElementById('endYear').value);
+            var leapYears = [];
+
+            for (var year = startYear; year <= endYear; year++) {
+                if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                    leapYears.push(year);
+                }
+            }
+
+            if (leapYears.length === 0) {
+                document.getElementById('result').innerHTML = "<p>No leap years found in the given range.</p>";
+            } else {
+                document.getElementById('result').innerHTML = "<p>Leap years in the given range:</p><ul><li>" + leapYears.join("</li><li>") + "</li></ul>";
+            }
+        }
+    </script>
+</body>
+<!-- </html>
+Sure, let's break down the logic behind the code and understand the numeric iterations involved.
+
+1. **HTML Structure**:
+The HTML part of the code sets up a simple user interface with two input fields for the user to enter the start and end years of the range. There's also a "Find Leap Years" button that, when clicked, triggers the JavaScript function to calculate and display the leap years in the given range.
+
+2. **JavaScript Logic**:
+The core logic is implemented in the `findLeapYears()` function, which is called when the button is clicked.
+
+   a. `var startYear = parseInt(document.getElementById('startYear').value);` and `var endYear = parseInt(document.getElementById('endYear').value);` extract the values entered by the user in the input fields and convert them from strings to integers using `parseInt()` function. These variables now hold the starting and ending years of the range the user provided.
+
+   b. `var leapYears = [];` creates an empty array called `leapYears` to store the leap years found within the given range.
+
+   c. `for (var year = startYear; year <= endYear; year++) { ... }` is a loop that iterates through each year in the given range. It starts with the `startYear` and continues until it reaches the `endYear`. The variable `year` is used to represent the current year being checked within each iteration.
+
+   d. `if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) { ... }` is the condition to check if a year is a leap year. The logic here follows the standard rules for leap years:
+      - A year is a leap year if it is divisible by 4 and not divisible by 100.
+      - However, if the year is divisible by 400, it is still considered a leap year.
+
+   e. If the condition in step d is true, it means the current `year` is a leap year, so it is added to the `leapYears` array using `leapYears.push(year);`.
+
+   f. After the loop finishes, the code checks whether any leap years were found. If `leapYears` is empty, it means no leap years were found within the given range, and a message is displayed accordingly.
+
+   g. If leap years were found, the code generates an HTML string that displays the leap years as a bulleted list within the "result" div using `document.getElementById('result').innerHTML`.
+
+3. **Numeric Iterations**:
+The numeric iterations involve going through each year in the given range to check whether it is a leap year or not. The loop uses the `year` variable to represent each year in the range.
+
+For example, if the user enters a start year of 2000 and an end year of 2020, the loop will iterate through the years from 2000 to 2020 (inclusive) and check if each year is a leap year. If it finds any leap years, they will be added to the `leapYears` array.
+
+Overall, this logic allows the program to find and display all the possible existing leap years within the given range using JavaScript and HTML.
+
+ -->
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Leap Year Finder</title>
+</head>
+<body>
+    <h1>Leap Year Finder</h1>
+    <label for="startYear">Start Year:</label>
+    <input type="number" id="startYear">
+    <label for="endYear">End Year:</label>
+    <input type="number" id="endYear">
+    <button onclick="findLeapYears()">Find Leap Years</button>
+    <h2>Leap Years:</h2>
+    <ul id="leapYearList"></ul>
+
+    <script>
+        function isLeapYear(year) {
+            return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+        }
+
+        function findLeapYears() {
+            var startYear = parseInt(document.getElementById('startYear').value);
+            var endYear = parseInt(document.getElementById('endYear').value);
+
+            if (isNaN(startYear) || isNaN(endYear)) {
+                alert("Please enter valid start and end years.");
+                return;
+            }
+
+            if (startYear > endYear) {
+                alert("Start year cannot be greater than end year.");
+                return;
+            }
+
+            var leapYears = [];
+            for (var year = startYear; year <= endYear; year++) {
+                if (isLeapYear(year)) {
+                    leapYears.push(year);
+                }
+            }
+
+            var leapYearList = document.getElementById('leapYearList');
+            leapYearList.innerHTML = '';
+
+            if (leapYears.length === 0) {
+                leapYearList.innerHTML = '<li>No leap years found in the given range.</li>';
+            } else {
+                leapYears.forEach(function (year) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = year;
+                    leapYearList.appendChild(listItem);
+                });
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Leap Year Finder</title>
+</head>
+<body>
+    <h1>Leap Year Finder</h1>
+    <label for="startYear">Start Year:</label>
+    <input type="number" id="startYear">
+    <label for="endYear">End Year:</label>
+    <input type="number" id="endYear">
+    <button onclick="findLeapYears()">Find Leap Years</button>
+    <h2>Leap Years:</h2>
+    <ul id="leapYearList"></ul>
+
+    <script>
+        function isLeapYear(year) {
+            return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+        }
+
+        function findLeapYears() {
+            const startYear = parseInt(document.getElementById('startYear').value);
+            const endYear = parseInt(document.getElementById('endYear').value);
+
+            if (isNaN(startYear) || isNaN(endYear) || startYear > endYear) {
+                alert("Please enter valid start and end years.");
+                return;
+            }
+
+            const leapYears = [];
+            for (let year = startYear; year <= endYear; year++) {
+                if (isLeapYear(year)) {
+                    leapYears.push(year);
+                }
+            }
+
+            const leapYearList = document.getElementById('leapYearList');
+            leapYearList.innerHTML = leapYears.length === 0
+                ? '<li>No leap years found in the given range.</li>'
+                : leapYears.map(year => `<li>${year}</li>`).join('');
+        }
+    </script>
+</body>
+</html> -->

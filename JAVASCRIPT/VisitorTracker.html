@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visit Tracker</title>
+    <style>
+      h1 {
+        color: rgb(255, 255, 255);
+        background-color: rgb(5, 68, 105);
+        text-align: center;
+        margin: 50px;
+        padding: 50px;
+        box-shadow: rgba(0, 0, 0, 0.5);
+        padding-left: 100px;
+        padding-right: 100px;
+        border-left-width: 100px;
+        margin-right: 250px;
+        margin-left: 250px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Visit Tracker</h1>
+    <p>You have visited this page <span id="visitCount">0</span> times.</p>
+
+    <script>
+      // Checking if the browser supports the localStorage API
+      if (typeof Storage !== "undefined") {
+        // Retrieving the visit count from localStorage
+        var visitCount = localStorage.getItem("visitCount");
+
+        // Checking if visit count is null or undefined
+        if (visitCount === null || visitCount === undefined) {
+          // First visit to the page
+          visitCount = 1;
+        } else {
+          // Incrementing the visit count
+          visitCount = parseInt(visitCount) + 1;
+        }
+
+        // Storing the updated visit count in localStorage
+        localStorage.setItem("visitCount", visitCount);
+
+        // Updating the visit count on the webpage
+        document.getElementById("visitCount").textContent = visitCount;
+      } else {
+        console.error("Web Storage is not supported by this browser.");
+      }
+    </script>
+  </body>
+</html>

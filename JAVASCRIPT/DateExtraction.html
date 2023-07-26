@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Extraction</title>
+</head>
+<body>
+    <h1>Date Extraction</h1>
+    <form onsubmit="extractDate(event)">
+        <label for="inputString">Enter a sentence:</label>
+        <input type="text" id="inputString" required>
+        <button type="submit">Extract Date</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        function extractDate(event) {
+            event.preventDefault();
+            const inputString = document.getElementById('inputString').value;
+
+            // Regular expression to find a date in the format MM/DD/YYYY or DD/MM/YYYY
+            const datePattern = /\d{2}\/\d{2}\/\d{4}/;
+
+            const matchedDate = inputString.match(datePattern);
+
+            if (matchedDate) {
+                document.getElementById('output').innerText = "Date found: " + matchedDate[0];
+            } else {
+                document.getElementById('output').innerText = "No date found in the input.";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Date Extraction</title>
+</head>
+<body>
+    <p id="output"></p>
+
+    <script>
+        function extractDateFromString(inputString) {
+            // Regular expression to find the date pattern (dd/mm/yyyy)
+            const dateRegex = /\d{2}\/\d{2}\/\d{4}/;
+
+            // Search for the date pattern in the inputString
+            const dateMatch = inputString.match(dateRegex);
+
+            if (dateMatch) {
+                return dateMatch[0];
+            } else {
+                return "No date found in the input string.";
+            }
+        }
+
+        // Sample input string
+        const inputString = "I am born on 06/03/2001";
+
+        // Call the function to extract the date
+        const extractedDate = extractDateFromString(inputString);
+
+        // Display the result in the HTML page
+        document.getElementById("output").textContent = extractedDate;
+    </script>
+</body>
+</html> -->

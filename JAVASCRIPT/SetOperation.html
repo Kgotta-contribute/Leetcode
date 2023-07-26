@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Operations</title>
+</head>
+<body>
+    <script>
+        // Create an empty Set to store values
+        const mySet = new Set();
+
+        // Function to add values to the Set
+        function addToSet() {
+            const inputValue = document.getElementById("inputValue").value;
+            mySet.add(inputValue);
+            document.getElementById("inputValue").value = ""; // Clear the input field
+            displaySetValues();
+        }
+
+        // Function to display the current values in the Set
+        function displaySetValues() {
+            const setValues = Array.from(mySet);
+            const setValuesContainer = document.getElementById("setValuesContainer");
+            setValuesContainer.innerHTML = setValues.join(", ");
+        }
+
+        // Function to retrieve values by iterating over the Set
+        function retrieveValues() {
+            const setValues = Array.from(mySet);
+            const retrievedValuesContainer = document.getElementById("retrievedValuesContainer");
+            let retrievedValues = "";
+
+            for (let value of setValues) {
+                retrievedValues += value + ", ";
+            }
+
+            retrievedValuesContainer.innerHTML = retrievedValues.slice(0, -2); // Remove the trailing comma and space
+        }
+    </script>
+
+    <h2>Set Operations</h2>
+    <label for="inputValue">Enter a value:</label>
+    <input type="text" id="inputValue">
+    <button onclick="addToSet()">Add to Set</button>
+
+    <h3>Current Set Values:</h3>
+    <div id="setValuesContainer"></div>
+
+    <button onclick="retrieveValues()">Retrieve Values</button>
+    <h3>Retrieved Values:</h3>
+    <div id="retrievedValuesContainer"></div>
+</body>
+</html>

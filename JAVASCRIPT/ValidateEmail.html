@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+</head>
+<body>
+    <h1>Email Validation</h1>
+    <input type="text" id="emailInput" placeholder="Enter email address">
+    <button onclick="validateEmail()">Validate</button>
+    <p id="resultMessage"></p>
+
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById('emailInput').value.trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (emailInput === '') {
+                document.getElementById('resultMessage').innerText = 'Please enter an email address.';
+            } else if (emailRegex.test(emailInput)) {
+                document.getElementById('resultMessage').innerText = 'Valid email address!';
+            } else {
+                document.getElementById('resultMessage').innerText = 'Invalid email address.';
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+Explanation of the regex:
+
+^: Asserts the beginning of the string.
+[a-zA-Z0-9._%+-]+: Matches one or more alphanumeric characters, dots, underscores, percent signs, plus signs, or hyphens for the username.
+@: Matches the @ symbol.
+[a-zA-Z0-9.-]+: Matches one or more alphanumeric characters, dots, or hyphens for the mail server.
+\.: Matches a dot (escaped with a backslash since dot has a special meaning in regex).
+[a-zA-Z]{2,}: Matches at least two or more alphabetic characters for the top-level domain.
+$: Asserts the end of the string. -->
