@@ -15,7 +15,8 @@
     </div>
 
     <script>
-        function splitStringToArray() {
+        function splitStringToArray() 
+        {
             // Get the input string from the text field
             const inputString = document.getElementById("inputString").value;
 
@@ -24,6 +25,7 @@
 
             // Display the result in the "result" paragraph element
             document.getElementById("result").textContent = JSON.stringify(wordsArray);
+            //It converts js object into json string -> stringify
         }
     </script>
 </body>

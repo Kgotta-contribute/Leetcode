@@ -27,11 +27,13 @@
     }
 
     // Function to prompt the user and insert elements in the array
-    function insertElements() {
+    function insertElements() 
+    {
       const arr = [];
       const n = parseInt(prompt("Enter the number of elements:"));
 
-      for (let i = 0; i < n; i++) {
+      for (let i = 0; i < n; i++) 
+      {
         const element = parseInt(prompt(`Enter element ${i + 1}:`));
         arr.push(element);
       }
@@ -40,7 +42,8 @@
     }
 
     // Main function to execute the binary search
-    function main() {
+    function main() 
+    {
       const arr = insertElements();
       const target = parseInt(prompt("Enter the element to search:"));
       

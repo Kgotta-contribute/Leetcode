@@ -28,15 +28,27 @@
     <script>
       var x = document.getElementById("loc");
 
-      function getCoordinates() {
-        if (navigator.geolocation) {
+      function getCoordinates() 
+      {
+        //Here we chcek whether browser supports geolocation api
+        if (navigator.geolocation) 
+        {
+
+          //if geolocation is supoorted in browser then getCurrentPosition method is used to get users current location
+          // if user loaction is fetched then showcoordinates is passed as an argument
           navigator.geolocation.getCurrentPosition(showcoordinates);
-        } else {
+        } 
+        else 
+        {
+          // if browser doesnt support the geoloaction api then this will be executed
           x.innerHTML = "The browser doesn't support Geolocation.";
         }
       }
 
-      function showcoordinates(myposition) {
+      //showcoordinates will be called when getCurrentPosition retrieves the correct location
+      function showcoordinates(myposition) 
+      {
+        //retrieving the below from myposition object
         x.innerHTML =
           "Your Latitude is: " +
           myposition.coords.latitude +
