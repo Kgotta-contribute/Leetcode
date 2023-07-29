@@ -35,6 +35,8 @@
 </head>
 <body>
     <h1>Date Extraction</h1>
+=======
+>>>>>>> f51a9d5b09b8de83f5cfc898f39e998ac4c41c64
     <form onsubmit="extractDate(event)">
         <label for="inputString">Enter a sentence:</label>
         <input type="text" id="inputString" required>
@@ -63,4 +65,43 @@
     </script>
 </body>
 </html>
+<<<<<<< HEAD
  -->
+=======
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Date Extraction</title>
+</head>
+<body>
+    <p id="output"></p>
+
+    <script>
+        function extractDateFromString(inputString) {
+            // Regular expression to find the date pattern (dd/mm/yyyy)
+            const dateRegex = /\d{2}\/\d{2}\/\d{4}/;
+
+            // Search for the date pattern in the inputString
+            const dateMatch = inputString.match(dateRegex);
+
+            if (dateMatch) {
+                return dateMatch[0];
+            } else {
+                return "No date found in the input string.";
+            }
+        }
+
+        // Sample input string
+        const inputString = "I am born on 06/03/2001";
+
+        // Call the function to extract the date
+        const extractedDate = extractDateFromString(inputString);
+
+        // Display the result in the HTML page
+        document.getElementById("output").textContent = extractedDate;
+    </script>
+</body>
+</html> -->
+>>>>>>> f51a9d5b09b8de83f5cfc898f39e998ac4c41c64
