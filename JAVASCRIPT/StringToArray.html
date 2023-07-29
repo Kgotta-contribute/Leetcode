@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String to Array</title>
+</head>
+<body>
+    <div>
+        <label for="inputString">Enter a sentence:</label>
+        <input type="text" id="inputString" />
+        <button onclick="splitStringToArray()">Convert to Array</button>
+    </div>
+    <div>
+        <h3>Result:</h3>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function splitStringToArray() 
+        {
+            // Get the input string from the text field
+            const inputString = document.getElementById("inputString").value;
+
+            // Split the string by spaces into an array
+            const wordsArray = inputString.split(" ");
+
+            // Display the result in the "result" paragraph element
+            document.getElementById("result").textContent = JSON.stringify(wordsArray);
+            //It converts js object into json string -> stringify
+        }
+    </script>
+</body>
+</html>

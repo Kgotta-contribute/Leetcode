@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map vs. Object Performance Test</title>
+</head>
+<body>
+  <h1>Map vs. Object Performance Test</h1>
+  <p>Open the browser console to see the results.</p>
+
+  <script>
+    // Function to test map performance
+    function testMapPerformance() {
+      const mapStart = performance.now();
+      const map = new Map();
+      
+      // Adding keys to the map
+      for (let i = 0; i < 100000; i++) {
+        map.set(`key${i}`, i);
+      }
+      
+      // Removing keys from the map
+      for (let i = 0; i < 100000; i++) {
+        map.delete(`key${i}`);
+      }
+
+      const mapEnd = performance.now();
+      console.log('Map performance time (ms):', mapEnd - mapStart);
+    }
+
+    // Function to test object performance
+    function testObjectPerformance() {
+      const objStart = performance.now();
+      const obj = {};
+      
+      // Adding keys to the object
+      for (let i = 0; i < 100000; i++) {
+        obj[`key${i}`] = i;
+      }
+      
+      // Removing keys from the object
+      for (let i = 0; i < 100000; i++) {
+        delete obj[`key${i}`];
+      }
+
+      const objEnd = performance.now();
+      console.log('Object performance time (ms):', objEnd - objStart);
+    }
+
+    // Run the performance tests
+    testMapPerformance();
+    testObjectPerformance();
+  </script>
+</body>
+</html>

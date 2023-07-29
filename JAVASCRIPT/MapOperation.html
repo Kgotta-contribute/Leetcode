@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map Operations</title>
+</head>
+<body>
+    <h1>Map Operations</h1>
+    <label for="key">Enter Key:</label>
+    <input type="text" id="key" />
+    <button onclick="storeValue()">Store Value</button>
+
+    <hr />
+
+    <h2>Retrieve Values from Map</h2>
+    <label for="keysToRetrieve">Enter Keys to Retrieve (comma-separated):</label>
+    <input type="text" id="keysToRetrieve" />
+    <button onclick="retrieveValues()">Retrieve Values</button>
+
+    <hr />
+
+    <h2>Results:</h2>
+    <div id="output"></div>
+
+    <script>
+        // Create an empty map to store key-value pairs
+        const myMap = new Map();
+
+        function storeValue() {
+            const keyInput = document.getElementById("key");
+            const value = prompt("Enter a value for the key '" + keyInput.value + "':");
+
+            if (value !== null) {
+                myMap.set(keyInput.value, value);
+                keyInput.value = '';
+            }
+        }
+
+        function retrieveValues() {
+            const keysToRetrieveInput = document.getElementById("keysToRetrieve");
+            const keysToRetrieve = keysToRetrieveInput.value.split(",").map(key => key.trim());
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = '';
+
+            keysToRetrieve.forEach(key => {
+                if (myMap.has(key)) {
+                    const value = myMap.get(key);
+                    outputDiv.innerHTML += `<p>Key: ${key}, Value: ${value}</p>`;
+                } else {
+                    outputDiv.innerHTML += `<p>Key: ${key}, Value: Not Found</p>`;
+                }
+            });
+
+            keysToRetrieveInput.value = '';
+        }
+    </script>
+</body>
+</html>

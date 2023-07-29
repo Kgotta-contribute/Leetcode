@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notification Example</title>
+    <style>
+      h1 {
+        color: rgb(255, 255, 255);
+        background-color: rgb(5, 68, 105);
+        text-align: center;
+        margin: 50px;
+        padding: 50px;
+        box-shadow: rgba(0, 0, 0, 0.5);
+        padding-left: 100px;
+        padding-right: 100px;
+        border-left-width: 100px;
+        margin-right: 250px;
+        margin-left: 250px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Notification Example</h1>
+
+    <button onclick="showNotification()">Show Notification</button>
+
+    <script>
+      function showNotification() {
+        // Checking if the browser supports the Notification API
+        if (!("Notification" in window)) {
+          console.error("This browser does not support desktop notification.");
+          return;
+        }
+
+        // Requesting permission to display notifications
+        Notification.requestPermission().then(function (permission) {
+          if (permission === "granted") {
+            // Creating a new notification
+            var notification = new Notification("Hello!", {
+              body: "This is a sample notification.",
+            });
+
+            // Handling click event on the notification
+            notification.onclick = function () {
+              console.log("Notification clicked!");
+            };
+          } else {
+            console.warn("Permission denied for notification.");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

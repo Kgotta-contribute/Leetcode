@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VTU USN Validator</title>
+</head>
+<body>
+    <h1>VTU USN Validator</h1>
+    <label for="usnInput">Enter VTU USN:</label>
+    <input type="text" id="usnInput">
+    <button onclick="validateUSN()">Validate</button>
+
+    <script>
+        function validateUSN() {
+            // Get the input value
+            const usn = document.getElementById("usnInput").value;
+
+            // Regular expression to validate VTU USN (Example format: 1CR17CS001)
+            const usnPattern = /^[1-8][A-Z]{2}\d{2}[A-Z]{2}\d{3}$/;
+
+            // Check if the input matches the pattern
+            if (usn.match(usnPattern)) {
+                alert("Valid USN!");
+            } else {
+                alert("Invalid USN!");
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- Sure! Let's break down the regular expression used to validate the VTU USN:
+
+```javascript
+const usnPattern = /^[1-8][A-Z]{2}\d{2}[A-Z]{2}\d{3}$/;
+```
+
+Now, let's go through each part of the regular expression:
+
+1. `^` - The caret symbol at the beginning of the pattern indicates that the match should start at the beginning of the input string.
+
+2. `[1-8]` - This part ensures that the first character of the USN is a digit from 1 to 8. VTU assigns unique codes to 
+colleges based on the first digit of the USN.
+
+3. `[A-Z]{2}` - This part specifies that the next two characters should be uppercase letters (A to Z). In VTU USN, these 
+two characters represent the branch code.
+
+4. `\d{2}` - `\d` is a shorthand character class that matches any digit from 0 to 9. The `{2}` quantifier indicates that the 
+previous pattern (in this case, `\d`) should occur exactly 2 times. This part represents the batch year, which consists of two digits.
+
+5. `[A-Z]{2}` - Similar to step 3, this part specifies that the next two characters should be uppercase letters (A to Z). In 
+VTU USN, these two characters represent the branch code again.
+
+6. `\d{3}` - This part indicates that the last three characters should be digits. These three digits form the unique identifier 
+within the branch.
+
+7. `$` - The dollar sign at the end of the pattern indicates that the match should end at the end of the input string.
+
+So, putting it all together, the regular expression validates that a VTU USN consists of the following structure:
+- A digit from 1 to 8 at the beginning.
+- Two uppercase letters representing the branch code.
+- Two digits representing the batch year.
+- Two uppercase letters representing the branch code again.
+- Three digits representing the unique identifier.
+
+Example valid VTU USNs according to this pattern would be: 1CR17CS001, 2ME20IS123, 3EC19EC010, etc.
+
+It's essential to note that this regular expression only checks the format of the USN and doesn't guarantee that the USN is 
+assigned to a real student or exists in the VTU database. For real-world applications, you may need to combine this format 
+check with additional checks or database verification for authenticity. -->

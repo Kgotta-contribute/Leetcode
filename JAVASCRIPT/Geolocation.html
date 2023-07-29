@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Navigator geolocation Property in HTML</title>
+    <style>
+      h1 {
+        color: green;
+      }
+      h2 {
+        font-family: Impact;
+      }
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Hello World</h1>
+    <h2>Navigator geolocation Property</h2>
+    <p>
+      For checking your coordinates, double click the "Get Coordinates" button :
+    </p>
+
+    <button ondblclick="getCoordinates()">Get Coordinates</button>
+    <p id="loc"></p>
+
+    <script>
+      var x = document.getElementById("loc");
+
+      function getCoordinates() 
+      {
+        //Here we chcek whether browser supports geolocation api
+        if (navigator.geolocation) 
+        {
+
+          //if geolocation is supoorted in browser then getCurrentPosition method is used to get users current location
+          // if user loaction is fetched then showcoordinates is passed as an argument
+          navigator.geolocation.getCurrentPosition(showcoordinates);
+        } 
+        else 
+        {
+          // if browser doesnt support the geoloaction api then this will be executed
+          x.innerHTML = "The browser doesn't support Geolocation.";
+        }
+      }
+
+      //showcoordinates will be called when getCurrentPosition retrieves the correct location
+      function showcoordinates(myposition) 
+      {
+        //retrieving the below from myposition object
+        x.innerHTML =
+          "Your Latitude is: " +
+          myposition.coords.latitude +
+          "<br>Your Longitude is: " +
+          myposition.coords.longitude;
+      }
+    </script>
+  </body>
+</html>

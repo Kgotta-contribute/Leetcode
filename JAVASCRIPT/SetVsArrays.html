@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set vs. Array Performance</title>
+</head>
+<body>
+    <h1>Set vs. Array Performance</h1>
+    <button onclick="comparePerformance()">Compare Performance</button>
+    <p>Open your browser's console to see the results.</p>
+
+    <script>
+        function comparePerformance() {
+            const sampleDataSize = 100000; // You can adjust this value as per your requirement.
+
+            // Create a sample set with random integers.
+            const sampleSet = new Set();
+            for (let i = 0; i < sampleDataSize; i++) {
+                const randomValue = Math.floor(Math.random() * sampleDataSize);
+                sampleSet.add(randomValue);
+            }
+
+            // Create a sample array with random integers.
+            const sampleArray = [];
+            for (let i = 0; i < sampleDataSize; i++) {
+                const randomValue = Math.floor(Math.random() * sampleDataSize);
+                sampleArray.push(randomValue);
+            }
+
+            // Perform multiple searches on the set and measure the time taken.
+            console.time('Set Search');
+            for (let i = 0; i < sampleDataSize; i++) {
+                const randomValue = Math.floor(Math.random() * sampleDataSize);
+                const isPresentInSet = sampleSet.has(randomValue);
+            }
+            console.timeEnd('Set Search');
+
+            // Perform multiple searches on the array and measure the time taken.
+            console.time('Array Search');
+            for (let i = 0; i < sampleDataSize; i++) {
+                const randomValue = Math.floor(Math.random() * sampleDataSize);
+                const isPresentInArray = sampleArray.includes(randomValue);
+            }
+            console.timeEnd('Array Search');
+        }
+    </script>
+</body>
+</html>

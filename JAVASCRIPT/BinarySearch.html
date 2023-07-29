@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binary Search</title>
+</head>
+<body>
+  <h1>Binary Search</h1>
+  <script>
+    // Function to perform binary search on the array
+    function binarySearch(arr, target) {
+      let left = 0;
+      let right = arr.length - 1;
+
+      while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) {
+          return mid; // Element found, return its index
+        } else if (arr[mid] < target) {
+          left = mid + 1; // Target is greater, search in the right half
+        } else {
+          right = mid - 1; // Target is smaller, search in the left half
+        }
+      }
+
+      return -1; // Element not found
+    }
+
+    // Function to prompt the user and insert elements in the array
+    function insertElements() 
+    {
+      const arr = [];
+      const n = parseInt(prompt("Enter the number of elements:"));
+
+      for (let i = 0; i < n; i++) 
+      {
+        const element = parseInt(prompt(`Enter element ${i + 1}:`));
+        arr.push(element);
+      }
+
+      return arr;
+    }
+
+    // Main function to execute the binary search
+    function main() 
+    {
+      const arr = insertElements();
+      const target = parseInt(prompt("Enter the element to search:"));
+      
+      arr.sort((a, b) => a - b); // Binary search requires a sorted array
+      const result = binarySearch(arr, target);
+
+      if (result !== -1) {
+        alert(`Element ${target} found at index ${result}.`);
+      } else {
+        alert(`Element ${target} not found in the array.`);
+      }
+    }
+
+    // Call the main function to start the process
+    main();
+  </script>
+</body>
+</html>
