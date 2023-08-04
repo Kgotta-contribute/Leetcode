@@ -44,11 +44,13 @@
     <input type="number" id="number" />
     <button onclick="reverseNumber()">Reverse</button>
     <p id="output"></p>
-    <script>const reverseNumber = () => {
+    
+    <script>const reverseNumber = () => 
+    {
         const number = document.getElementById("number").value;
         const reversedNumber = parseInt(number.toString().split("").reverse().join(""));
         document.getElementById("output").innerHTML = `Reversed Number: ${reversedNumber}`;
-      }
-      </script>
+    }
+    </script>
   </body>
 </html>

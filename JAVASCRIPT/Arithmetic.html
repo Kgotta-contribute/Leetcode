@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
     </head>
@@ -29,6 +29,73 @@
                     output += "Division : " + (num1 / num2) + "<br>";
                 }
                 document.getElementById("output").innerHTML = output;
+            }
+        </script>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <label>Enter two numbers: </label>
+        <input type="text" id="num1">
+        <input type="text" id="num2">
+        <button onclick="arithmetic()">Click Here</button>
+        <p id="output"></p>
+
+        <script>
+            function arithmetic() {
+                const a = parseInt(document.getElementById("num1").value);
+                const b = parseInt(document.getElementById("num2").value);
+                let output = "";
+
+                if (isNaN(a) || isNaN(b)) {
+                    output = "<span style='color: green;'>Please Enter your numbers: </span>";
+                } else {
+                    const num1 = a;
+                    const num2 = b;
+
+                    performArithmetic(num1, num2)
+                    .then((results) => 
+                    {
+                        output = "Addition : " + results.addition + "<br>";
+                        output += "Subtraction : " + results.subtraction + "<br>";
+                        output += "Multiplication : " + results.multiplication + "<br>";
+                        output += "Division : " + results.division + "<br>";
+
+                        document.getElementById("output").innerHTML = output;
+                    });
+                }
+            }
+
+            function performArithmetic(num1, num2)
+             {
+                return new Promise((resolve) =>
+                {
+                    const results = {};
+
+                    setTimeout(() => 
+                    {
+                        results.addition = num1 + num2;
+                        resolve(results);
+                    }, 1000); // 1000ms delay for addition
+
+                    setTimeout(() => {
+                        results.subtraction = num1 - num2;
+                        resolve(results);
+                    }, 2000); // 2000ms delay for subtraction
+
+                    setTimeout(() => {
+                        results.multiplication = num1 * num2;
+                        resolve(results);
+                    }, 3000); // 3000ms delay for multiplication
+
+                    setTimeout(() => {
+                        results.division = num1 / num2;
+                        resolve(results);
+                    }, 4000); // 4000ms delay for division
+                });
             }
         </script>
     </body>

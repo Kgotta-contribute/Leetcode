@@ -18,14 +18,6 @@
                 const randomValue = Math.floor(Math.random() * sampleDataSize);
                 sampleSet.add(randomValue);
             }
-
-            // Create a sample array with random integers.
-            const sampleArray = [];
-            for (let i = 0; i < sampleDataSize; i++) {
-                const randomValue = Math.floor(Math.random() * sampleDataSize);
-                sampleArray.push(randomValue);
-            }
-
             // Perform multiple searches on the set and measure the time taken.
             console.time('Set Search');
             for (let i = 0; i < sampleDataSize; i++) {
@@ -33,6 +25,14 @@
                 const isPresentInSet = sampleSet.has(randomValue);
             }
             console.timeEnd('Set Search');
+
+            
+            // Create a sample array with random integers.
+            const sampleArray = [];
+            for (let i = 0; i < sampleDataSize; i++) {
+                const randomValue = Math.floor(Math.random() * sampleDataSize);
+                sampleArray.push(randomValue);
+            }
 
             // Perform multiple searches on the array and measure the time taken.
             console.time('Array Search');

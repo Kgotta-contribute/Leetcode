@@ -11,7 +11,8 @@
       let left = 0;
       let right = arr.length - 1;
 
-      while (left <= right) {
+      while (left <= right) 
+      {
         const mid = Math.floor((left + right) / 2);
 
         if (arr[mid] === target) {
@@ -50,9 +51,12 @@
       arr.sort((a, b) => a - b); // Binary search requires a sorted array
       const result = binarySearch(arr, target);
 
-      if (result !== -1) {
+      if (result !== -1) 
+      {
         alert(`Element ${target} found at index ${result}.`);
-      } else {
+      } 
+      else 
+      {
         alert(`Element ${target} not found in the array.`);
       }
     }
