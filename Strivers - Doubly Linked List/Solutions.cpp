@@ -339,10 +339,34 @@ int Srch_del_PandN()
     }
 }
 
+void deleteAllOccurrences(int key) {
+    struct node *temp = first;
+    while (temp != nullptr) {
+        if (temp->data == key) {
+            if (temp == first) {
+                first = temp->next;
+                if (first != nullptr)
+                    first->prev = nullptr;
+            } else {
+                temp->prev->next = temp->next;
+                if (temp->next != nullptr)
+                    temp->next->prev = temp->prev;
+            }
+            struct node *toDelete = temp;
+            temp = temp->next;
+            delete toDelete;
+        } else {
+            temp = temp->next;
+        }
+    }
+    std::cout << "All occurrences of " << key << " are deleted\n";
+}
+
+
 int main()
 {
     int ch, res;
-    std::cout << "1.Insert at the top\n 2.Insert at the end\n 3.Insert at a pos\n 4.Delete at the top\n 5.Delete at the end\n6. Delete at a pos\n7.DisplayF\n 8.DisplayB\n9.search\n 10. Del after given pos\n 11. Del before value \n 12. Search ele, del prev & next ele \n 13.Exit\n";
+    std::cout << "1.Insert at the top\n 2.Insert at the end\n 3.Insert at a pos\n 4.Delete at the top\n 5.Delete at the end\n6. Delete at a pos\n7.DisplayF\n 8.DisplayB\n9.search\n 10. Del after given pos\n 11. Del before value \n 12. Search ele, del prev & next ele \n13.Delete all occurences of a given key in DLL \n14.Exit\n";
 
     // DELETE AFTER A GIVEN POS, DELETE BEFORE A GIVEN POSITION
 
@@ -393,6 +417,12 @@ int main()
             Srch_del_PandN();
             break;
         case 13:
+            int key;
+            std::cout << "Enter the key to delete all occurrences: ";
+            std::cin >> key;
+            deleteAllOccurrences(key);
+            break;
+        case 14:
             exit(0);
         default:
             std::cout << "Invalid position";
