@@ -362,11 +362,75 @@ void deleteAllOccurrences(int key) {
     std::cout << "All occurrences of " << key << " are deleted\n";
 }
 
+void removeDuplicates()
+{
+    struct node *current = first;
+    while (current != nullptr && current->next != nullptr)
+    {
+        if (current->data == current->next->data)
+        {
+            struct node *nextNext = current->next->next;
+            delete current->next;
+            current->next = nextNext;
+            if (nextNext != nullptr)
+            {
+                nextNext->prev = current;
+            }
+        }
+        else
+        {
+            current = current->next;
+        }
+    }
+}
+
+void findPairsWithSum(int sum)
+{
+    struct node *left = first;
+    struct node *right = first;
+
+    // Move right to the end of the list
+    while (right->next != nullptr)
+    {
+        right = right->next;
+    }
+
+    bool found = false;
+
+    while (left != nullptr && right != nullptr && left != right && right->next != left)
+    {
+        int currentSum = left->data + right->data;
+
+        if (currentSum == sum)
+        {
+            std::cout << "Pair found: " << left->data << " and " << right->data << "\n";
+            found = true;
+            left = left->next;
+            right = right->prev;
+        }
+        else if (currentSum < sum)
+        {
+            left = left->next;
+        }
+        else
+        {
+            right = right->prev;
+        }
+    }
+
+    if (!found)
+    {
+        std::cout << "No pairs found with the given sum\n";
+    }
+}
+
+
+
 
 int main()
 {
     int ch, res;
-    std::cout << "1.Insert at the top\n 2.Insert at the end\n 3.Insert at a pos\n 4.Delete at the top\n 5.Delete at the end\n6. Delete at a pos\n7.DisplayF\n 8.DisplayB\n9.search\n 10. Del after given pos\n 11. Del before value \n 12. Search ele, del prev & next ele \n13.Delete all occurences of a given key in DLL \n14.Exit\n";
+    std::cout << "1.Insert at the top\n 2.Insert at the end\n 3.Insert at a pos\n 4.Delete at the top\n 5.Delete at the end\n6. Delete at a pos\n7.DisplayF\n 8.DisplayB\n9.search\n 10. Del after given pos\n 11. Del before value \n 12. Search ele, del prev & next ele \n13.Delete all occurences of a given key in DLL \n14.Exit\n15.Remove duplicates \n16. Enter sum to find pairs \n";
 
     // DELETE AFTER A GIVEN POS, DELETE BEFORE A GIVEN POSITION
 
@@ -424,8 +488,21 @@ int main()
             break;
         case 14:
             exit(0);
+
+        case 15:
+                removeDuplicates();
+                std::cout << "Duplicates removed from the sorted doubly linked list\n";
+                break;
+        
         default:
             std::cout << "Invalid position";
+
+        case 16:
+            int sum;
+            std::cout << "Enter the sum to find pairs: ";
+            std::cin >> sum;
+            findPairsWithSum(sum);
+            break;
         }
     }
 
