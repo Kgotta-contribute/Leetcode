@@ -25,10 +25,8 @@ int main()
                 count++;
             }
         }
-        
         output += std::to_string(count);
     }
-
     std::cout << "Output: " << output << std::endl;
 
     return 0;

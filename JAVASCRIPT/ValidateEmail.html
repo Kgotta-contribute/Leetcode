@@ -29,6 +29,9 @@
 <!-- 
 Explanation of the regex:
 
+///^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//    username          mail server     top level domain
+
 ^: Asserts the beginning of the string.
 [a-zA-Z0-9._%+-]+: Matches one or more alphanumeric characters, dots, underscores, percent signs, plus signs, or hyphens for the username.
 @: Matches the @ symbol.
