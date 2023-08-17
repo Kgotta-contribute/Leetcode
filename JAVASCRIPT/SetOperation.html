@@ -1,4 +1,72 @@
+<!-- Set Operations Example -->
+
 <!DOCTYPE html>
+<html>
+<head>
+    <title>Set Operations</title>
+</head>
+<body>
+    <script>
+        // Create an empty Set to store values
+        const mySet = new Set();
+
+        // Function to add values to the Set
+        function addToSet() {
+            // Get the value from the input field
+            const inputValue = document.getElementById("inputValue").value;
+            // Add the value to the Set
+            mySet.add(inputValue);
+            // Clear the input field
+            document.getElementById("inputValue").value = "";
+            // Update displayed Set values
+            displaySetValues();
+        }
+
+        // Function to display the current values in the Set
+        function displaySetValues() {
+            // Convert Set values to an array
+            const setValues = Array.from(mySet);
+            // Get the container to display Set values
+            const setValuesContainer = document.getElementById("setValuesContainer");
+            // Update the displayed Set values
+            setValuesContainer.textContent = setValues.join(", ");
+        }
+
+        // Function to retrieve and display values from the Set
+        function retrieveValues() {
+            // Convert Set values to an array
+            const setValues = Array.from(mySet);
+            // Get the container to display retrieved values
+            const retrievedValuesContainer = document.getElementById("retrievedValuesContainer");
+            let retrievedValues = "";
+
+            // Iterate over the Set values and build the retrieved values string
+            for (let value of setValues) {
+                retrievedValues += value + ", ";
+            }
+
+            // Display the retrieved values
+            retrievedValuesContainer.textContent = retrievedValues.slice(0, -2);
+        }
+    </script>
+
+    <!-- User interface -->
+    <h2>Set Operations</h2>
+    <label for="inputValue">Enter a value:</label>
+    <input type="text" id="inputValue">
+    <button onclick="addToSet()">Add to Set</button>
+
+    <h3>Current Set Values:</h3>
+    <div id="setValuesContainer"></div>
+
+    <button onclick="retrieveValues()">Retrieve Values</button>
+    <h3>Retrieved Values:</h3>
+    <div id="retrievedValuesContainer"></div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Set Operations</title>
@@ -49,4 +117,4 @@
     <h3>Retrieved Values:</h3>
     <div id="retrievedValuesContainer"></div>
 </body>
-</html>
+</html> -->

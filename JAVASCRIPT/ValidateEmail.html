@@ -14,11 +14,16 @@
             const emailInput = document.getElementById('emailInput').value.trim();
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-            if (emailInput === '') {
+            if (emailInput === '') 
+            {
                 document.getElementById('resultMessage').innerText = 'Please enter an email address.';
-            } else if (emailRegex.test(emailInput)) {
+            } 
+            else if (emailRegex.test(emailInput)) 
+            {
                 document.getElementById('resultMessage').innerText = 'Valid email address!';
-            } else {
+            } 
+            else 
+            {
                 document.getElementById('resultMessage').innerText = 'Invalid email address.';
             }
         }
