@@ -1,4 +1,4 @@
-<!-- Set Operations Example -->
+<!-- Set Operations Example
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,6 @@
         }
     </script>
 
-    <!-- User interface -->
     <h2>Set Operations</h2>
     <label for="inputValue">Enter a value:</label>
     <input type="text" id="inputValue">
@@ -63,45 +62,32 @@
     <h3>Retrieved Values:</h3>
     <div id="retrievedValuesContainer"></div>
 </body>
-</html>
+</html> -->
 
-
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Set Operations</title>
 </head>
 <body>
     <script>
-        // Create an empty Set to store values
         const mySet = new Set();
 
-        // Function to add values to the Set
         function addToSet() {
             const inputValue = document.getElementById("inputValue").value;
             mySet.add(inputValue);
-            document.getElementById("inputValue").value = ""; // Clear the input field
+            document.getElementById("inputValue").value = "";
             displaySetValues();
         }
 
-        // Function to display the current values in the Set
         function displaySetValues() {
-            const setValues = Array.from(mySet);
             const setValuesContainer = document.getElementById("setValuesContainer");
-            setValuesContainer.innerHTML = setValues.join(", ");
+            setValuesContainer.textContent = Array.from(mySet).join(", ");
         }
 
-        // Function to retrieve values by iterating over the Set
         function retrieveValues() {
-            const setValues = Array.from(mySet);
             const retrievedValuesContainer = document.getElementById("retrievedValuesContainer");
-            let retrievedValues = "";
-
-            for (let value of setValues) {
-                retrievedValues += value + ", ";
-            }
-
-            retrievedValuesContainer.innerHTML = retrievedValues.slice(0, -2); // Remove the trailing comma and space
+            retrievedValuesContainer.textContent = Array.from(mySet).join(", ");
         }
     </script>
 
@@ -117,4 +103,5 @@
     <h3>Retrieved Values:</h3>
     <div id="retrievedValuesContainer"></div>
 </body>
-</html> -->
+</html>
+
