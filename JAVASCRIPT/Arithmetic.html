@@ -35,8 +35,6 @@
 </html> -->
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
     <body>
         <label>Enter two numbers: </label>
         <input type="text" id="num1">
@@ -45,14 +43,18 @@
         <p id="output"></p>
 
         <script>
-            function arithmetic() {
+            function arithmetic() 
+            {
                 const a = parseInt(document.getElementById("num1").value);
                 const b = parseInt(document.getElementById("num2").value);
                 let output = "";
 
-                if (isNaN(a) || isNaN(b)) {
+                if (isNaN(a) || isNaN(b)) 
+                {
                     output = "<span style='color: green;'>Please Enter your numbers: </span>";
-                } else {
+                } 
+                else 
+                {
                     const num1 = a;
                     const num2 = b;
 
