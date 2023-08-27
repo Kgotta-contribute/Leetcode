@@ -9,10 +9,22 @@ void rotateArray(int arr[], int n, int k, bool isRight) {
         reverse(arr, arr + n); // Reverse the entire array
         reverse(arr, arr + k); // Reverse the first K elements
         reverse(arr + k, arr + n); // Reverse the remaining N-K elements
+
+    // SOMETIMES YOU GOTTA SOLVE LIKE BELOW
+        // reverse(nums.begin(), nums.end());
+        // reverse(nums.begin(), nums.begin()+k);
+        // reverse(nums.begin()+k, nums.end());
     } else {
         reverse(arr, arr + n); // Reverse the entire array
         reverse(arr, arr + n - k); // Reverse the last N-K elements
         reverse(arr + n - k, arr + n); // Reverse the first K elements
+// SOMETIMES YOU GOTTA SOLVE LIKE BELOW
+    //     //reverses entire array
+    // reverse(arr.begin(), arr.end());
+    // //reverse last n-k elements
+    // reverse(arr.begin(), arr.end()-1);
+    // //reverse first k elements
+    // reverse(arr.end()-1, arr.end());
     }
 }
 
