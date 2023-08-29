@@ -38,20 +38,25 @@
    const resultElement = document.getElementById("result");
 
    // define the promise
-   const locationPromise = new Promise((resolve, reject) => {
-    if (locationInput.toLowerCase() === "paris") {
+   const locationPromise = new Promise((resolve, reject) => 
+   {
+    if (locationInput.toLowerCase() === "paris") 
+    {
      resolve("Let's take a trip to Paris");
-    } else {
+    } 
+    else {
      reject("Invalid Location");
     }
    });
 
    // handle the promise
    locationPromise
-    .then((result) => {
+    .then((result) => 
+    {
      resultElement.innerHTML = result;
     })
-    .catch((error) => {
+    .catch((error) => 
+    {
      resultElement.innerHTML = error;
     });
   }
