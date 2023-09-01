@@ -99,3 +99,122 @@ All iterations are complete. The function getLongestSubarray returns len = 3.
 
 The main function prints: "The length of the longest subarray is: 3".
 */
+
+
+
+
+// can also be done using the below approach:
+
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int getLongestSubarray(vector<int>& nums, int k) {
+//     int n = nums.size();
+//     unordered_map<int, int> prefixSum; // Map to store prefix sum
+//     int maxLength = 0;
+//     int currentSum = 0;
+
+//     for (int i = 0; i < n; i++) {
+//         currentSum += nums[i];
+
+//         // If currentSum is equal to k, the entire subarray from the beginning up to the current index is a valid subarray.
+//         if (currentSum == k) {
+//             maxLength = i + 1;
+//         }
+
+//         // If (currentSum - k) is present in prefixSum, it means there is a subarray that sums up to k.
+//         if (prefixSum.find(currentSum - k) != prefixSum.end()) {
+//             maxLength = max(maxLength, i - prefixSum[currentSum - k]);
+//         }
+
+//         // Store the current prefix sum and its index in the map.
+//         if (prefixSum.find(currentSum) == prefixSum.end()) {
+//             prefixSum[currentSum] = i;
+//         }
+//     }
+
+//     return maxLength;
+// }
+
+// int main() {
+//     int t;
+//     cin >> t;
+
+//     while (t--) {
+//         int n, k;
+//         cin >> n >> k;
+//         vector<int> nums(n);
+
+//         for (int i = 0; i < n; i++) {
+//             cin >> nums[i];
+//         }
+
+//         int result = getLongestSubarray(nums, k);
+//         cout << result << endl;
+//     }
+
+//     return 0;
+// }
+// Certainly! Here's a step-by-step explanation of how the code you provided progresses with numeric iterations:
+
+// Let's consider a sample input and follow the code's execution:
+
+// Sample Input:
+// ```
+// 2
+// 3 5
+// 2 3 5
+// 3 1
+// -1 1 1
+// ```
+
+// 1. **First Test Case (3 5, 2 3 5):**
+
+//    - `n = 3`, the size of the input array.
+//    - `maxLength = 0`, initially set to 0.
+//    - `currentSum = 0`, initially set to 0.
+//    - `prefixSum` is an unordered map to store prefix sums.
+
+//    Iteration 1 (i = 0):
+//      - `currentSum += nums[0]` -> `currentSum = 2`.
+//      - Since `currentSum` is not equal to `k` (5), no changes to `maxLength`.
+//      - `prefixSum` remains empty.
+   
+//    Iteration 2 (i = 1):
+//      - `currentSum += nums[1]` -> `currentSum = 5`.
+//      - `currentSum` is now equal to `k`, so `maxLength` is updated to `i + 1`, which is 2.
+//      - `prefixSum` remains empty.
+
+//    Iteration 3 (i = 2):
+//      - `currentSum += nums[2]` -> `currentSum = 10`.
+//      - Since `currentSum` is not equal to `k` (5), no changes to `maxLength`.
+//      - `prefixSum` remains empty.
+
+//    So, the result for this test case is 2.
+
+// 2. **Second Test Case (3 1, -1 1 1):**
+
+//    - `n = 3`, the size of the input array.
+//    - `maxLength = 0`, initially set to 0.
+//    - `currentSum = 0`, initially set to 0.
+//    - `prefixSum` is an unordered map to store prefix sums.
+
+//    Iteration 1 (i = 0):
+//      - `currentSum += nums[0]` -> `currentSum = -1`.
+//      - Since `currentSum` is not equal to `k` (1), no changes to `maxLength`.
+//      - `prefixSum` remains empty.
+   
+//    Iteration 2 (i = 1):
+//      - `currentSum += nums[1]` -> `currentSum = 0`.
+//      - Since `currentSum` is not equal to `k` (1), no changes to `maxLength`.
+//      - `prefixSum` remains empty.
+
+//    Iteration 3 (i = 2):
+//      - `currentSum += nums[2]` -> `currentSum = 1`.
+//      - `currentSum` is now equal to `k`, so `maxLength` is updated to `i + 1`, which is 3.
+//      - `prefixSum` remains empty.
+
+//    So, the result for this test case is 3.
+
+// The code repeats these steps for each test case in the while loop. It computes the length of the longest subarray whose sum is equal to `k` for each test case and prints the result.
