@@ -20,7 +20,7 @@ document.getElementById('encryptButton').addEventListener('click', function()
   {
     alert('Please enter a valid shift pattern between 1 and 25.');
   } 
-  else 
+  else   
   {
     const encryptedText = caesarCipherEncrypt(inputText, shiftPattern);
     alert(`Encrypted Text: ${encryptedText}`);
