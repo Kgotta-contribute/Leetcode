@@ -1,11 +1,13 @@
 #include <vector>
+#include<iostream>
+using namespace std; // Added using namespace std to remove std:: prefixes
 
 class Solution {
 public:
-    std::vector<std::vector<int>> floodFill(std::vector<std::vector<int>>& image, int sr, int sc, int color) {
-        int originalColor = image[sr][sc]; // Store the original color of the starting pixel.
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int originalColor = image[sr][sc];
         if (originalColor == color) {
-            return image; // No need to make changes if the color is the same.
+            return image;
         }
 
         dfs(image, sr, sc, originalColor, color);
@@ -13,37 +15,35 @@ public:
         return image;
     }
 
-private:
-    void dfs(std::vector<std::vector<int>>& image, int x, int y, int originalColor, int newColor) {
-        if (x < 0 || x >= image.size() || y < 0 || y >= image[0].size() || image[x][y] != originalColor) {
-            return; // Out of bounds or pixel doesn't have the original color.
+    void dfs(vector<vector<int>>& image, int row, int col, int originalColor, int newColor) {
+        if (row < 0 || row >= image.size() || col < 0 || col >= image[0].size() || image[row][col] != originalColor) {
+            return;
         }
 
-        image[x][y] = newColor; // Change the color of the current pixel.
+        image[row][col] = newColor;
 
-        // Recursively fill neighboring pixels in all four directions.
-        dfs(image, x + 1, y, originalColor, newColor); // Right
-        dfs(image, x - 1, y, originalColor, newColor); // Left
-        dfs(image, x, y + 1, originalColor, newColor); // Down
-        dfs(image, x, y - 1, originalColor, newColor); // Up
+        dfs(image, row + 1, col, originalColor, newColor);//  (moving down)
+        dfs(image, row - 1, col, originalColor, newColor);//  (moving up)
+        dfs(image, row, col + 1, originalColor, newColor);//  (moving right)
+        dfs(image, row, col - 1, originalColor, newColor);//  (moving left)
     }
 };
 
 int main() {
     Solution solution;
-    std::vector<std::vector<int>> image = {{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
+    vector<vector<int>> image = {{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
     int sr = 1;
     int sc = 1;
     int color = 2;
 
-    std::vector<std::vector<int>> result = solution.floodFill(image, sr, sc, color);
+    vector<vector<int>> result = solution.floodFill(image, sr, sc, color);
 
     // Print the modified image
-    for (const std::vector<int>& row : result) {
+    for (const vector<int>& row : result) {
         for (int pixel : row) {
-            std::cout << pixel << " ";
+            cout << pixel << " ";
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 
     return 0;
@@ -64,7 +64,8 @@ int main() {
 // originalColor is set to image[1][1], which is 1.
 // We call the dfs function with x = 1, y = 1, originalColor = 1, and newColor = 2.
 
-// Inside dfs, we check if (1, 1) is out of bounds or if the pixel color is different from the originalColor. In this case, (1, 1) is not out of bounds, and the color is the same, so we continue.
+// Inside dfs, we check if (1, 1) is out of bounds or if the pixel color is different from the originalColor. 
+//In this case, (1, 1) is not out of bounds, and the color is the same, so we continue.
 
 // We change the color of (1, 1) to 2.
 

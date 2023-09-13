@@ -42,8 +42,8 @@ int main() {
     Solution solution;
     
     // Find LCA of nodes 2 and 8
-    TreeNode* p = root->left;
-    TreeNode* q = root->right;
+    TreeNode* p = root->left->left;
+    TreeNode* q = root->right->right;
     TreeNode* lca = solution.lowestCommonAncestor(root, p, q);
     
     if (lca) {
@@ -57,3 +57,23 @@ int main() {
     
     return 0;
 }
+
+
+
+
+//     6
+//    / \
+//   2   8
+//  / \   \
+// 0   4   9
+//    / \
+//   3   5
+// We set p = 2 (node no. 2), and q = 8(node no. 8).
+
+// We call lowestCommonAncestor with root of the tree, p= first node, and q = second node.
+
+// root node = 6. Since p (2) < root (6) and q (8) > root, we enter the else block.
+
+// Function returns root (6) as the lowest common ancestor because it's the first node encountered that is between p and q inclusive.
+
+// In the main function, we print "The lowest common ancestor is: 6" as the result.

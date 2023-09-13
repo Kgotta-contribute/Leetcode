@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+using namespace std;
 
 class Solution {
 public:
@@ -54,7 +55,7 @@ int main() {
 
 // Initialize charCount as an empty unordered map.
 
-// Check if the lengths of s1 and t1 are equal. They are both 7 characters long, so the length check passes.
+// Check if the lengths of s1 and t1 are equal.
 
 // Iterate through string s1 (first loop):
 
@@ -65,6 +66,7 @@ int main() {
 // Character 'r': Increment count for 'r' in charCount, charCount = {'a': 2, 'n': 1, 'g': 1, 'r': 1}.
 // Character 'a': Increment count for 'a' in charCount, charCount = {'a': 3, 'n': 1, 'g': 1, 'r': 1}.
 // Character 'm': Increment count for 'm' in charCount, charCount = {'a': 3, 'n': 1, 'g': 1, 'r': 1, 'm': 1}.
+
 // Iterate through string t1 (second loop):
 
 // Character 'n': Decrement count for 'n' in charCount, charCount = {'a': 3, 'n': 0, 'g': 1, 'r': 1, 'm': 1}.
