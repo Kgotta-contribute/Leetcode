@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 // Definition for a binary tree node.
 struct TreeNode {
     int val;
@@ -22,6 +22,15 @@ public:
         return root;
     }
 };
+void printInOrder(TreeNode* node) {
+    if (node == nullptr) {
+        return;
+    }
+
+    printInOrder(node->left);
+    std::cout << node->val << " ";
+    printInOrder(node->right);
+}
 
 int main() {
     Solution solution;
