@@ -15,6 +15,15 @@ struct TreeNode {
 
 class Codec {
 public:
+
+// The serialize function takes a TreeNode* as input and returns a string representation of the binary tree.
+// It initializes an empty string serialized to store the serialized tree, and a queue nodeQueue to perform level-order traversal of the tree.
+// The function performs a level-order traversal of the tree using the queue.
+// For each node, it checks if the node is nullptr. If so, it appends "null" to the serialized string. Otherwise, it appends the node's value followed by a space.
+// It then pushes the left and right child nodes of the current node into the nodeQueue.
+// Finally, it returns the serialized string.
+
+
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
         string serialized;
@@ -36,6 +45,18 @@ public:
         
         return serialized;
     }
+
+
+// The deserialize function takes a string data as input and returns the deserialized binary tree.
+// It initializes an istringstream object iss with the data string, a string val to store the current value being read, and a queue nodeQueue to reconstruct the tree.
+// It reads the first value from iss into val. If the value is "null", it means the tree is empty, so it returns nullptr.
+// Otherwise, it creates a new TreeNode with the value converted from val and sets it as the root of the tree.
+// It pushes the root into the nodeQueue.
+// The function then enters a loop that continues until the nodeQueue is empty.
+// In each iteration, it pops the front node from the nodeQueue and assigns it to curr.
+// It reads the next value from iss into val. If the value is not "null", it creates a new TreeNode with the value converted from val and sets it as the left child of curr. It then pushes the left child into the nodeQueue.
+// It reads the next value from iss into val. If the value is not "null", it creates a new TreeNode with the value converted from val and sets it as the right child of curr. It then pushes the right child into the nodeQueue.
+// Finally, it returns the root of the deserialized tree.
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
@@ -119,3 +140,5 @@ int main() {
     
     return 0;
 }
+
+

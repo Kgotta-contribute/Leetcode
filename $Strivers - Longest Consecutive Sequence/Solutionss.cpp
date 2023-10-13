@@ -3,13 +3,14 @@
 #include <vector>
 //provides the std::unordered_set container to store a collection of unique elements with constant-time average lookup.
 #include <unordered_set>
+using namespace std;
 
-int longestConSequence(const std::vector<int>& nums) {
+int longestConSequence(const vector<int>& nums) {
     int n = nums.size();
     if (n <= 1)
         return n;
     //creates an unordered set numSet and initializes it with the elements of the input vector nums.
-    std::unordered_set<int> numSet(nums.begin(), nums.end());
+    unordered_set<int> numSet(nums.begin(), nums.end());
     int maxLen = 0;
 
     // iterates over each element num in the vector nums. The loop will execute once for each element present in the vector.
@@ -27,7 +28,7 @@ int longestConSequence(const std::vector<int>& nums) {
                 currentLen++;
             }
 
-            maxLen = std::max(maxLen, currentLen);
+            maxLen = max(maxLen, currentLen);
         }
     }
 
@@ -35,11 +36,11 @@ int longestConSequence(const std::vector<int>& nums) {
 }
 
 int main() {
-    std::vector<int> nums1 = {7,8,9,10,11,100, 200, 1, 3, 2, 4,5,6};
-    std::cout << "Example 1: " << longestConSequence(nums1) << std::endl;
+    vector<int> nums1 = {7,8,9,10,11,100, 200, 1, 3, 2, 4,5,6};
+    cout << "Example 1: " << longestConSequence(nums1) << endl;
 
-    std::vector<int> nums2 = {3, 8, 5, 7, 6};
-    std::cout << "Example 2: " << longestConSequence(nums2) << std::endl;
+    vector<int> nums2 = {3, 8, 5, 7, 6};
+    cout << "Example 2: " << longestConSequence(nums2) << endl;
 
     return 0;
 }

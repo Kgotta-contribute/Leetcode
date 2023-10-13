@@ -3,9 +3,9 @@ using namespace std;
 
 bool canWePlace(vector<int> &stalls, int dist, int cows) 
 {
-    int n = stalls.size(); //size of array
-    int cntCows = 1; //no. of cows placed
-    int last = stalls[0]; //position of last placed cow.
+    int n = stalls.size();
+    int cntCows = 1;
+    int last = stalls[0];
     for (int i = 1; i < n; i++) 
     {
         if (stalls[i] - last >= dist) 
@@ -19,12 +19,12 @@ bool canWePlace(vector<int> &stalls, int dist, int cows)
 }
 int aggressiveCows(vector<int> &stalls, int k) 
 {
-    int n = stalls.size(); //size of array
-    //sort the stalls[]:
+    int n = stalls.size();
+
     sort(stalls.begin(), stalls.end());
 
     int low = 1, high = stalls[n - 1] - stalls[0];
-    //apply binary search:
+    
     while (low <= high) 
     {
         int mid = (low + high) / 2;
