@@ -7,7 +7,6 @@ class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
         int candidate1 = 0, candidate2 = 0, count1 = 0, count2 = 0;
-        
         for (int num : nums) {
             if (num == candidate1) {
                 count1++;
@@ -54,11 +53,9 @@ public:
 int main() {
     Solution solution;
     
-    // Test the majorityElement function
     vector<int> nums = {3, 2, 3, 1, 2, 2, 3};
     vector<int> result = solution.majorityElement(nums);
     
-    // Print the results
     cout << "Majority Elements: ";
     for (int num : result) {
         cout << num << " ";
