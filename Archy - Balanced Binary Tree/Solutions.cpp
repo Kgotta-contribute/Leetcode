@@ -1,6 +1,9 @@
 #include <iostream>
 #include <algorithm> // for max function
+#include<bits/stdc++.h>
+using namespace std;
 
+// HEIGHT OF LEFT SUBTREE - RIGHT SUBTREE <= 1 ;
 // Definition for a binary tree node.
 struct TreeNode {
     int val;
@@ -11,17 +14,18 @@ struct TreeNode {
     TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 
-
 class Solution {
 public:
-    bool isBalanced(TreeNode* root) {
+    bool isBalanced(TreeNode* root) 
+    {
         int height = 0; // Variable to store the height difference
-        
         return isBalancedHelper(root, height);
     }
     
-    bool isBalancedHelper(TreeNode* root, int& height) {
-        if (root == nullptr) {
+    bool isBalancedHelper(TreeNode* root, int& height)
+    {
+        if (root == nullptr)
+        {
             height = 0; // Height of an empty tree is 0
             return true;
         }
@@ -30,21 +34,26 @@ public:
         
         // Check if the left subtree is balanced
         bool leftBalanced = isBalancedHelper(root->left, leftHeight);
-        if (!leftBalanced) {
+        
+        if (!leftBalanced)
+        {
             return false; // Left subtree is unbalanced, no need to continue
         }
         
         // Check if the right subtree is balanced
         bool rightBalanced = isBalancedHelper(root->right, rightHeight);
-        if (!rightBalanced) {
+        
+        if (!rightBalanced)
+        {
             return false; // Right subtree is unbalanced, no need to continue
         }
         
         // Calculate the height of the current node's subtree
-        height = 1 + std::max(leftHeight, rightHeight);
+        height = 1 + max(leftHeight, rightHeight);
         
         // Check if the current node is balanced
-        if (abs(leftHeight - rightHeight) <= 1) {
+        if (abs(leftHeight - rightHeight) <= 1)
+        {
             return true;
         }
         
@@ -62,7 +71,7 @@ int main() {
     root1->right->left = new TreeNode(15);
     root1->right->right = new TreeNode(7);
 
-    std::cout << "Example 1: " << (solution.isBalanced(root1) ? "True" : "False") << std::endl;
+    cout << "Example 1: " << (solution.isBalanced(root1) ? "True" : "False") << endl;
 
     // Example 2: Unbalanced tree
     TreeNode* root2 = new TreeNode(1);
@@ -73,12 +82,12 @@ int main() {
     root2->left->left->left = new TreeNode(4);
     root2->left->left->right = new TreeNode(4);
 
-    std::cout << "Example 2: " << (solution.isBalanced(root2) ? "True" : "False") << std::endl;
+    cout << "Example 2: " << (solution.isBalanced(root2) ? "True" : "False") << endl;
 
     // Example 3: Empty tree
     TreeNode* root3 = nullptr;
 
-    std::cout << "Example 3: " << (solution.isBalanced(root3) ? "True" : "False") << std::endl;
+    cout << "Example 3: " << (solution.isBalanced(root3) ? "True" : "False") << endl;
 
     return 0;
 }
