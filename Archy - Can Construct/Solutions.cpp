@@ -1,11 +1,12 @@
 #include <iostream>
 #include <unordered_map>
+using namespace std;
 
 class Solution {
 public:
-    bool canConstruct(std::string ransomNote, std::string magazine) {
+    bool canConstruct(string ransomNote, string magazine) {
         // Create a hashmap to store character frequencies in the magazine
-        std::unordered_map<char, int> charCount;
+        unordered_map<char, int> charCount;
 
         // Count character frequencies in the magazine
         for (char ch : magazine) {
@@ -32,19 +33,19 @@ int main() {
     Solution solution;
 
     // Example 1
-    std::string ransomNote1 = "a";
-    std::string magazine1 = "b";
-    std::cout << "Example 1: " << (solution.canConstruct(ransomNote1, magazine1) ? "True" : "False") << std::endl;
+    string ransomNote1 = "a";
+    string magazine1 = "b";
+    cout << "Example 1: " << (solution.canConstruct(ransomNote1, magazine1) ? "True" : "False") << endl;
 
     // Example 2
-    std::string ransomNote2 = "aa";
-    std::string magazine2 = "ab";
-    std::cout << "Example 2: " << (solution.canConstruct(ransomNote2, magazine2) ? "True" : "False") << std::endl;
+    string ransomNote2 = "aa";
+    string magazine2 = "ab";
+    cout << "Example 2: " << (solution.canConstruct(ransomNote2, magazine2) ? "True" : "False") << endl;
 
     // Example 3
-    std::string ransomNote3 = "aa";
-    std::string magazine3 = "aab";
-    std::cout << "Example 3: " << (solution.canConstruct(ransomNote3, magazine3) ? "True" : "False") << std::endl;
+    string ransomNote3 = "aa";
+    string magazine3 = "aab";
+    cout << "Example 3: " << (solution.canConstruct(ransomNote3, magazine3) ? "True" : "False") << endl;
 
     return 0;
 }
@@ -52,8 +53,8 @@ int main() {
 
 
 
-// std::string ransomNote = "aa";
-// std::string magazine = "aab";
+// string ransomNote = "aa";
+// string magazine = "aab";
 // Here's the step-by-step iteration of the canConstruct function:
 
 // Iteration 1:

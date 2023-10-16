@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+using namespace std;
 
 class Solution {
 public:
@@ -8,7 +9,7 @@ public:
             return n;
         }
 
-        std::vector<int> dp(n + 1, 0);
+        vector<int> dp(n + 1, 0);
         dp[1] = 1;
         dp[2] = 2;
 
@@ -23,13 +24,11 @@ public:
 int main() {
     Solution solution;
 
-    // Example 1
     int n1 = 2;
-    std::cout << "Example 1: " << solution.climbStairs(n1) << std::endl;
+    cout << "Example 1: " << solution.climbStairs(n1) << endl;
 
-    // Example 2
     int n2 = 3;
-    std::cout << "Example 2: " << solution.climbStairs(n2) << std::endl;
+    cout << "Example 2: " << solution.climbStairs(n2) << endl;
 
     return 0;
 }

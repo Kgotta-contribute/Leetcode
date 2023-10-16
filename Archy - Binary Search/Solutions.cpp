@@ -8,7 +8,7 @@ public:
         int right = nums.size() - 1;
 
         while (left <= right) {
-            int mid = left + (right - left) / 2; // Calculate the middle index.
+            int mid = left + (right - left) / 2;
 
             if (nums[mid] == target) {
                 return mid; // Target found, return its index.
