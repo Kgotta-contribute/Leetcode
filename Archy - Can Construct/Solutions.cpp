@@ -1,3 +1,6 @@
+//Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the 
+//letters from magazine and false otherwise.
+
 #include <iostream>
 #include <unordered_map>
 using namespace std;
@@ -32,17 +35,14 @@ public:
 int main() {
     Solution solution;
 
-    // Example 1
-    string ransomNote1 = "a";
-    string magazine1 = "b";
+    string ransomNote1 = "ac";
+    string magazine1 = "babc";
     cout << "Example 1: " << (solution.canConstruct(ransomNote1, magazine1) ? "True" : "False") << endl;
 
-    // Example 2
     string ransomNote2 = "aa";
     string magazine2 = "ab";
     cout << "Example 2: " << (solution.canConstruct(ransomNote2, magazine2) ? "True" : "False") << endl;
 
-    // Example 3
     string ransomNote3 = "aa";
     string magazine3 = "aab";
     cout << "Example 3: " << (solution.canConstruct(ransomNote3, magazine3) ? "True" : "False") << endl;
