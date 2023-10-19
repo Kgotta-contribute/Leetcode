@@ -57,8 +57,6 @@ int main() {
     graph1[3]->neighbors = {graph1[0], graph1[2]};
 
     Node* clonedGraph1 = solution.cloneGraph(graph1[0]);
-
-    // Clean up memory
     for (int i = 0; i < 4; ++i) {
         delete graph1[i];
     }
