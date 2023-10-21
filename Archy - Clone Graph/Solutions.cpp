@@ -47,9 +47,9 @@ public:
 int main() {
     Solution solution;
 
-    // Example 1
     vector<Node*> graph1(4);
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < 4; ++i) 
+    {
         graph1[i] = new Node(i + 1); // Create four nodes with values 1, 2, 3, and 4
     }
     graph1[0]->neighbors = {graph1[1], graph1[3]}; // Node 1 is connected to nodes 2 and 4
