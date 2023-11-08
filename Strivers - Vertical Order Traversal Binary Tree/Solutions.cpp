@@ -13,9 +13,9 @@ struct TreeNode {
 
 class Solution {
 public:
-    std::vector<std::vector<int>> verticalTraversal(TreeNode* root) {
-        std::map<int, std::map<int, std::vector<int>>> columnMap;
-        std::queue<std::pair<TreeNode*, std::pair<int, int>>> nodeQueue;
+    vector<vector<int>> verticalTraversal(TreeNode* root) {
+        map<int, map<int, vector<int>>> columnMap;
+        queue<pair<TreeNode*, pair<int, int>>> nodeQueue;
         nodeQueue.push({root, {0, 0}});
 
         while (!nodeQueue.empty()) {
@@ -35,12 +35,12 @@ public:
             }
         }
 
-        std::vector<std::vector<int>> result;
+        vector<vector<int>> result;
         for (const auto& colPair : columnMap) {
-            std::vector<int> column;
+            vector<int> column;
             for (const auto& rowPair : colPair.second) {
-                std::vector<int> nodes = rowPair.second;
-                std::sort(nodes.begin(), nodes.end());
+                vector<int> nodes = rowPair.second;
+                sort(nodes.begin(), nodes.end());
                 column.insert(column.end(), nodes.begin(), nodes.end());
             }
             result.push_back(column);
@@ -58,14 +58,14 @@ int main() {
     root->right->right = new TreeNode(7);
 
     Solution solution;
-    std::vector<std::vector<int>> verticalOrder = solution.verticalTraversal(root);
+    vector<vector<int>> verticalOrder = solution.verticalTraversal(root);
 
-    std::cout << "Vertical Order Traversal:" << std::endl;
+    cout << "Vertical Order Traversal:" << endl;
     for (const auto& column : verticalOrder) {
         for (const auto& node : column) {
-            std::cout << node << " ";
+            cout << node << " ";
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 
     delete root->right->left;
