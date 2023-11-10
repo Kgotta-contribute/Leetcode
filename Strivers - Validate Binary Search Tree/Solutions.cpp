@@ -104,8 +104,5 @@ int main() {
     bool isValid2 = solution2.isValidBST(root2);
     cout << "Example 2: " << (isValid2 ? "Valid BST" : "Not a valid BST") << endl;
 
-    // Clean up the memory by deleting the tree nodes
-    // You can add code here to delete the tree nodes to avoid memory leaks
-
     return 0;
 }
