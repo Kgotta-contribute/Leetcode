@@ -28,7 +28,7 @@ int main() {
 
     double result = power(x, n);
 
-    cout << fixed << setprecision(6); // Setting precision to 6 decimal places
+    cout << fixed << setprecision(6);
     cout << "Result: " << result << endl;
 
     return 0;
