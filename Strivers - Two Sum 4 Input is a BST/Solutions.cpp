@@ -2,9 +2,6 @@
 #include <unordered_set>
 using namespace std;
 
-/**
- * Definition for a binary tree node.
- */
 struct TreeNode {
     int val;
     TreeNode* left;
