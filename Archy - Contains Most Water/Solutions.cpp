@@ -39,3 +39,39 @@ Iterations:
     left=3 and right=4. We calculate the area as Math.min(height[3], height[4])*(4-3) = Math.min(2, 5) * 1 = 2. Since 49 is still the current maxArea, we don't update it.
 
 */
+
+
+
+
+
+
+
+
+// JAVA
+
+class Solution {
+    public int maxArea(int[] height) {
+        int n = height.length;
+        int left = 0, right = n - 1;
+        int maxArea = 0;
+        while (left < right) {
+            int area = Math.min(height[left], height[right]) * (right - left);
+            maxArea = Math.max(maxArea, area);
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return maxArea;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7}; // Example input
+        int result = solution.maxArea(height);
+        System.out.println("The maximum area is: " + result);
+    }
+}
