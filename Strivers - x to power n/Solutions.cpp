@@ -35,6 +35,48 @@ int main() {
 }
 
 
+
+
+
+
+
+
+// JAVA
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of x: ");
+        double x = scanner.nextDouble();
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        double result = power(x, n);
+
+        System.out.printf("Result: %.6f%n", result);
+    }
+
+    public static double power(double x, int n) {
+        if (n == 0) {
+            return 1.0;
+        }
+        if (n < 0) {
+            x = 1 / x;
+            n = -n;
+        }
+        double result = 1.0;
+        for (int i = 0; i < n; ++i) {
+            result *= x;
+        }
+        return result;
+    }
+}
+
+
+
+
 /*
 class Solution {
 public:
