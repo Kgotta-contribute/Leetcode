@@ -8,7 +8,6 @@ public:
         if (n <= 2) {
             return n;
         }
-
         vector<int> dp(n + 1, 0);
         dp[1] = 1;
         dp[2] = 2;
@@ -16,20 +15,16 @@ public:
         for (int i = 3; i <= n; ++i) {
             dp[i] = dp[i - 1] + dp[i - 2];
         }
-
         return dp[n];
     }
 };
 
 int main() {
     Solution solution;
-
     int n1 = 2;
     cout << "Example 1: " << solution.climbStairs(n1) << endl;
-
     int n2 = 3;
     cout << "Example 2: " << solution.climbStairs(n2) << endl;
-
     return 0;
 }
 

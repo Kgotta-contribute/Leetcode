@@ -1,6 +1,5 @@
 //Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the 
 //letters from magazine and false otherwise.
-
 #include <iostream>
 #include <unordered_map>
 using namespace std;
@@ -15,7 +14,6 @@ public:
         for (char ch : magazine) {
             charCount[ch]++;
         }
-
         // Check if you can construct the ransom note
         for (char ch : ransomNote) {
             if (charCount.find(ch) != charCount.end() && charCount[ch] > 0) {
@@ -26,7 +24,6 @@ public:
                 return false;
             }
         }
-
         // If you successfully used all characters in the ransom note, return true
         return true;
     }
@@ -42,7 +39,7 @@ int main() {
     string ransomNote2 = "aa";
     string magazine2 = "ab";
     cout << "Example 2: " << (solution.canConstruct(ransomNote2, magazine2) ? "True" : "False") << endl;
-
+    
     string ransomNote3 = "aa";
     string magazine3 = "aab";
     cout << "Example 3: " << (solution.canConstruct(ransomNote3, magazine3) ? "True" : "False") << endl;
