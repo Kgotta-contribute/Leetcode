@@ -46,7 +46,7 @@ int main() {
 
 
 
-// JAVA
+// JAVA CODE
 
 class ListNode {
     int val;
