@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#include<bits/stdc++.h>
+using namespace std;
 
 class Solution {
 public:
-    std::vector<int> searchRange(std::vector<int>& nums, int target) {
+    vector<int> searchRange(vector<int>& nums, int target) {
         int first = findFirst(nums, target);
         int last = findLast(nums, target);
         if (first != -1 && last != -1) {
@@ -14,7 +16,7 @@ public:
     }
 
 private:
-    int findFirst(const std::vector<int>& nums, int target) {
+    int findFirst(const vector<int>& nums, int target) {
         int left = 0;
         int right = nums.size() - 1;
         int first = -1;
@@ -35,7 +37,7 @@ private:
         return first;
     }
 
-    int findLast(const std::vector<int>& nums, int target) {
+    int findLast(const vector<int>& nums, int target) {
         int left = 0;
         int right = nums.size() - 1;
         int last = -1;
@@ -61,22 +63,22 @@ int main() {
     Solution solution;
 
     // Example 1
-    std::vector<int> nums1 = {5, 7, 7, 8, 8, 10};
+    vector<int> nums1 = {5, 7, 7, 8, 8, 10};
     int target1 = 8;
-    std::vector<int> result1 = solution.searchRange(nums1, target1);
-    std::cout << "Example 1: [" << result1[0] << ", " << result1[1] << "]" << std::endl;
+    vector<int> result1 = solution.searchRange(nums1, target1);
+    cout << "Example 1: [" << result1[0] << ", " << result1[1] << "]" << endl;
 
     // Example 2
-    std::vector<int> nums2 = {5, 7, 7, 8, 8, 10};
+    vector<int> nums2 = {5, 7, 7, 8, 8, 10};
     int target2 = 6;
-    std::vector<int> result2 = solution.searchRange(nums2, target2);
-    std::cout << "Example 2: [" << result2[0] << ", " << result2[1] << "]" << std::endl;
+    vector<int> result2 = solution.searchRange(nums2, target2);
+    cout << "Example 2: [" << result2[0] << ", " << result2[1] << "]" << endl;
 
     // Example 3
-    std::vector<int> nums3 = {};
+    vector<int> nums3 = {};
     int target3 = 0;
-    std::vector<int> result3 = solution.searchRange(nums3, target3);
-    std::cout << "Example 3: [" << result3[0] << ", " << result3[1] << "]" << std::endl;
+    vector<int> result3 = solution.searchRange(nums3, target3);
+    cout << "Example 3: [" << result3[0] << ", " << result3[1] << "]" << endl;
 
     return 0;
 }
