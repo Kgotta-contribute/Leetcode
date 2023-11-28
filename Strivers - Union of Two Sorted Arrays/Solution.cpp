@@ -28,9 +28,45 @@ int main()
 
 
 
+// JAVA
+
+import java.util.HashSet;
+import java.util.Vector;
+
+public class Main {
+    static Vector<Integer> findUnion(int[] a1, int[] a2, int n, int m) {
+        HashSet<Integer> set = new HashSet<>();
+        Vector<Integer> union = new Vector<>();
+
+        for (int i = 0; i < n; i++)
+            set.add(a1[i]);
+        for (int i = 0; i < m; i++)
+            set.add(a2[i]);
+        for (int val : set)
+            union.add(val);
+        return union;
+    }
+
+    public static void main(String[] args) {
+        int n = 10, m = 7;
+        int[] a1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] a2 = {2, 3, 4, 4, 5, 11, 12};
+
+        Vector<Integer> union = findUnion(a1, a2, n, m);
+
+        System.out.println("Union of a1 & a2 is: ");
+        for (int val : union)
+            System.out.print(val + " ");
+    }
+}
 
 
-// METHOD 2 USING TWO-POINTERS
+
+
+
+
+
+// METHOD 2 USING TWO-POINTERS CPP
 // #include <bits/stdc++.h>
 // using namespace std;
 
