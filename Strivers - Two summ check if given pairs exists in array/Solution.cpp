@@ -6,7 +6,6 @@ using namespace std;
 
 string twoSumExists(int arr[], int n, int target) {
     unordered_set<int> numSet;
-
     for (int i = 0; i < n; i++) {
         int complement = target - arr[i];
         if (numSet.find(complement) != numSet.end()) {
@@ -14,13 +13,11 @@ string twoSumExists(int arr[], int n, int target) {
         }
         numSet.insert(arr[i]);
     }
-
     return "NO";
 }
 
 vector<int> twoSumIndices(int arr[], int n, int target) {
     unordered_map<int, int> numIndices;
-
     for (int i = 0; i < n; i++) {
         int complement = target - arr[i];
         if (numIndices.find(complement) != numIndices.end()) {
@@ -28,7 +25,6 @@ vector<int> twoSumIndices(int arr[], int n, int target) {
         }
         numIndices[arr[i]] = i;
     }
-
     return {-1, -1};
 }
 
@@ -51,6 +47,69 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+// JAVA
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class TwoSum {
+
+    String twoSumExists(int[] arr, int n, int target) {
+        HashSet<Integer> numSet = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            int complement = target - arr[i];
+            if (numSet.contains(complement)) {
+                return "YES";
+            }
+            numSet.add(arr[i]);
+        }
+        return "NO";
+    }
+
+    int[] twoSumIndices(int[] arr, int n, int target) {
+        HashMap<Integer, Integer> numIndices = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int complement = target - arr[i];
+            if (numIndices.containsKey(complement)) {
+                return new int[]{numIndices.get(complement), i};
+            }
+            numIndices.put(arr[i], i);
+        }
+        return new int[]{-1, -1};
+    }
+
+    public static void main(String[] args) {
+        TwoSum twoSum = new TwoSum(); // Create an instance of the class
+        int[] arr = {2, 6, 5, 8, 11};
+        int target = 14;
+        int n = arr.length;
+
+        System.out.println("Variant 1: Two-Sum Exists?");
+        System.out.println(twoSum.twoSumExists(arr, n, target));
+
+        System.out.println("\nVariant 2: Two-Sum Indices");
+        int[] indices = twoSum.twoSumIndices(arr, n, target);
+        if (indices[0] == -1 && indices[1] == -1) {
+            System.out.println("NO");
+        } else {
+            System.out.println("YES");
+            System.out.println(indices[0] + " " + indices[1]);
+        }
+    }
+}
+
+
+
+
+
+
 
 
 // numSet.find(complement): The find() function is used to search for a specific element (complement) in the numSet unordered set. If the element is found, it returns an iterator pointing to that element; otherwise, it returns an iterator pointing to the end of the set.
