@@ -4,8 +4,8 @@
 
 class Solution {
 public:
-    std::vector<int> twoSum(std::vector<int>& nums, int target) {
-        std::unordered_map<int, int> mp;
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> mp;
 
         for (int i = 0; i < nums.size(); i++) 
         {
@@ -20,25 +20,25 @@ public:
 
 int main() {
     // Example 1
-    std::vector<int> nums1 = {2, 7, 11, 15};
+    vector<int> nums1 = {2, 7, 11, 15};
     int target1 = 9;
     Solution solution1;
-    std::vector<int> result1 = solution1.twoSum(nums1, target1);
-    std::cout << "Example 1 Output: [" << result1[0] << ", " << result1[1] << "]\n";
+    vector<int> result1 = solution1.twoSum(nums1, target1);
+    cout << "Example 1 Output: [" << result1[0] << ", " << result1[1] << "]\n";
 
     // Example 2
-    std::vector<int> nums2 = {3, 2, 4};
+    vector<int> nums2 = {3, 2, 4};
     int target2 = 6;
     Solution solution2;
-    std::vector<int> result2 = solution2.twoSum(nums2, target2);
-    std::cout << "Example 2 Output: [" << result2[0] << ", " << result2[1] << "]\n";
+    vector<int> result2 = solution2.twoSum(nums2, target2);
+    cout << "Example 2 Output: [" << result2[0] << ", " << result2[1] << "]\n";
 
     // Example 3
-    std::vector<int> nums3 = {3, 2,1,3};
+    vector<int> nums3 = {3, 2,1,3};
     int target3 = 6;
     Solution solution3;
-    std::vector<int> result3 = solution3.twoSum(nums3, target3);
-    std::cout << "Example 3 Output: [" << result3[0] << ", " << result3[1] << "]\n";
+    vector<int> result3 = solution3.twoSum(nums3, target3);
+    cout << "Example 3 Output: [" << result3[0] << ", " << result3[1] << "]\n";
 
     return 0;
 }
@@ -76,3 +76,56 @@ int main() {
 //  the current element is added to the map with its index. If the complement is found 
 //  in the map, it means a pair of elements has been found whose sum equals the target 
 //  value, and the function returns the indices of these two elements. 
+
+
+
+
+
+
+
+
+
+// JAVA
+
+
+import java.util.HashMap;
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(target - nums[i])) {
+                map.put(nums[i], i);
+            } else {
+                return new int[]{map.get(target - nums[i]), i};
+            }
+        }
+        return new int[]{-1, -1};
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Example 1
+        int[] nums1 = {2, 7, 11, 15};
+        int target1 = 9;
+        Solution solution1 = new Solution();
+        int[] result1 = solution1.twoSum(nums1, target1);
+        System.out.println("Example 1 Output: [" + result1[0] + ", " + result1[1] + "]");
+
+        // Example 2
+        int[] nums2 = {3, 2, 4};
+        int target2 = 6;
+        Solution solution2 = new Solution();
+        int[] result2 = solution2.twoSum(nums2, target2);
+        System.out.println("Example 2 Output: [" + result2[0] + ", " + result2[1] + "]");
+
+        // Example 3
+        int[] nums3 = {3, 2, 1, 3};
+        int target3 = 6;
+        Solution solution3 = new Solution();
+        int[] result3 = solution3.twoSum(nums3, target3);
+        System.out.println("Example 3 Output: [" + result3[0] + ", " + result3[1] + "]");
+    }
+}
