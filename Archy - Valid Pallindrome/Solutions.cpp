@@ -111,3 +111,50 @@ int main() {
 
 // left = 0, right = 0
 // left and right point to the same character, which is alphanumeric.
+
+
+
+
+
+
+// JAVA
+
+public class Solution {
+    public boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        // Iterate while the left pointer is less than the right pointer.
+        while (left < right) {
+            // Move the left pointer to the right until it points to an alphanumeric character.
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+                left++;
+            }
+            // Move the right pointer to the left until it points to an alphanumeric character.
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+                right--;
+            }
+
+            // Compare characters at the left and right positions while ignoring case.
+            if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+                return false; // If they don't match, it's not a palindrome.
+            }
+
+            left++;  // Move the left pointer to the right.
+            right--; // Move the right pointer to the left.
+        }
+
+        return true; // If the loop completes without mismatches, it's a palindrome.
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String s1 = "A man, a plan, a canal: Panama";
+        String s2 = "race a car";
+        String s3 = " ";
+
+        System.out.println(solution.isPalindrome(s1));  // Output: true
+        System.out.println(solution.isPalindrome(s2));  // Output: false
+        System.out.println(solution.isPalindrome(s3));  // Output: true
+    }
+}
