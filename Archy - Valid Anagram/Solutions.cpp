@@ -76,3 +76,56 @@ int main() {
 // Character 'r': Decrement count for 'r' in charCount, charCount = {'a': 1, 'n': 0, 'g': 0, 'r': 0, 'm': 1}.
 // Character 'a': Decrement count for 'a' in charCount, charCount = {'a': 0, 'n': 0, 'g': 0, 'r': 0, 'm': 1}.
 // Iterate through the charCount map to check if all character counts are zero. They are all zero, so the function returns true, indicating that s1 and t1 are anagrams.
+
+
+
+
+
+
+
+
+
+
+
+// JAVA
+
+
+import java.util.*;
+
+public class Isogram {
+    public static boolean checkIsogram(String str) {
+        // Convert the string to lowercase
+        str = str.toLowerCase();
+        
+        // Create a HashSet to store the characters
+        Set<Character> set = new HashSet<>();
+        
+        // Iterate through the string
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            
+            // If the character is already in the set, return false
+            if (set.contains(c)) {
+                return false;
+            }
+            
+            // Otherwise, add the character to the set
+            set.add(c);
+        }
+        
+        // If all characters are unique, return true
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        String s1 = "anagram";
+        String t1 = "nagaram";
+        String s2 = "rat";
+        String t2 = "car";
+        
+        System.out.println(checkIsogram(s1)); // Output: false
+        System.out.println(checkIsogram(t1)); // Output: true
+        System.out.println(checkIsogram(s2)); // Output: true
+        System.out.println(checkIsogram(t2)); // Output: true
+    }
+}

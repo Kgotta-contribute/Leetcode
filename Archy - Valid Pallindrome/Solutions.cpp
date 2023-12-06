@@ -10,7 +10,8 @@ public:
         int right = s.length() - 1;
         
         // Iterate while the left pointer is less than the right pointer.
-        while (left < right) {
+        while (left < right) 
+        {
             // Move the left pointer to the right until it points to an alphanumeric character.
             while (left < right && !isalnum(s[left])) {
                 left++;
@@ -28,7 +29,6 @@ public:
             left++;  // Move the left pointer to the right.
             right--; // Move the right pointer to the left.
         }
-        
         return true; // If the loop completes without mismatches, it's a palindrome.
     }
 };
