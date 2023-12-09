@@ -1,10 +1,11 @@
 #include <iostream>
 #include <unordered_map>
+using namespace std;
 
 class Solution {
 public:
-    bool canConstruct(std::string ransomNote, std::string magazine) {
-        std::unordered_map<char, int> charCount;
+    bool canConstruct(string ransomNote, string magazine) {
+        unordered_map<char, int> charCount;
         
         // Count the frequency of each character in the magazine
         for (char c : magazine) {
@@ -31,13 +32,59 @@ public:
 };
 
 int main() {
-    std::string ransomNote = "aa";
-    std::string magazine = "aab";
+    string ransomNote = "aa";
+    string magazine = "aab";
     
     Solution solution;
     bool canConstruct = solution.canConstruct(ransomNote, magazine);
     
-    std::cout << "Can construct ransom note: " << (canConstruct ? "true" : "false") << std::endl;
+    cout << "Can construct ransom note: " << (canConstruct ? "true" : "false") << endl;
     
     return 0;
 }
+
+
+
+
+
+// JAVA
+
+
+
+
+import java.util.HashMap;
+
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        
+        // Count the frequency of each character in the magazine
+        for (char c : magazine.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+        
+        // Check if the ransomNote can be constructed using the characters from the magazine
+        for (char c : ransomNote.toCharArray()) {
+            if (charCount.containsKey(c) && charCount.get(c) > 0) {
+                charCount.put(c, charCount.get(c) - 1);
+            } else {
+                return false;
+            }
+        }
+        // Indicating it can be constructed
+        return true;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        String ransomNote = "aa";
+        String magazine = "aab";
+        
+        Solution solution = new Solution();
+        boolean canConstruct = solution.canConstruct(ransomNote, magazine);
+        
+        System.out.println("Can construct ransom note: " + (canConstruct ? "true" : "false"));
+    }
+}
+

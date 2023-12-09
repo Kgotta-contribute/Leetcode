@@ -64,32 +64,37 @@ public class Solution {
         int len = s.length();
         char[] stack = new char[len];
         int top = 0;
-        for (char c : s.toCharArray()) {
-            if (c == '(' || c == '[' || c == '{') {
+        for (char c : s.toCharArray()) 
+        {
+            if (c == '(' || c == '[' || c == '{') 
+            {
                 stack[top++] = c;
-            } else if (c == ')' || c == ']' || c == '}') {
-                if (top == 0 || !isValidPair(stack[--top], c)) {
+            } 
+            else if (c == ')' || c == ']' || c == '}') 
+            {
+                if (top == 0 || !isValidPair(stack[--top], c)) 
+                {
                     return false;
                 }
             }
         }
         return top == 0;
     }
-
-    private boolean isValidPair(char open, char close) {
+    private boolean isValidPair(char open, char close) 
+    {
         return (open == '(' && close == ')') ||
                (open == '[' && close == ']') ||
                (open == '{' && close == '}');
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution s = new Solution();
         String s1 = "()";
         String s2 = "()[]{}";
         String s3 = "(]";
 
-        System.out.println(solution.isValid(s1));  // Output: true
-        System.out.println(solution.isValid(s2));  // Output: true
-        System.out.println(solution.isValid(s3));  // Output: false
+        System.out.println(s.isValid(s1));  // Output: true
+        System.out.println(s.isValid(s2));  // Output: true
+        System.out.println(s.isValid(s3));  // Output: false
     }
 }
