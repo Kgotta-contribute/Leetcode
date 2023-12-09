@@ -19,12 +19,16 @@ public:
             {
                 charCount[c]--;
             } 
-            //If the count is greater than 0, it means that the character c is available in //the magazine string. In this case, the code decrements the count of character c in the //charCount map to indicate that it has been used.
+            //If the count is greater than 0, it means that the character c is available in 
+            //the magazine string. In this case, the code decrements the count of character c in the 
+            //charCount map to indicate that it has been used.
             else 
             {
                 return false;
             }
-            //If the count is not greater than 0, it means that the character c is not //available in sufficient quantity in the magazine string to construct the ransom note. In this //case, the code immediately returns false to indicate that the ransom note cannot be //constructed.
+            //If the count is not greater than 0, it means that the character c is not 
+            //available in sufficient quantity in the magazine string to construct the ransom note. In this 
+            //case, the code immediately returns false to indicate that the ransom note cannot be //constructed.
         }
         //indicating it can be constructed
         return true;
@@ -87,4 +91,3 @@ public class Main {
         System.out.println("Can construct ransom note: " + (canConstruct ? "true" : "false"));
     }
 }
-
