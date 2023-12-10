@@ -1,22 +1,24 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include<bits/stdc++.h>
+using namespace std;
 
 class Solution {
 public:
-    int maxProfit(std::vector<int>& prices) {
+    int maxProfit(vector<int>& prices) {
         int minPrice = INT_MAX; // Initialize the minimum price to a large value.
         int maxProfit = 0;     // Initialize the maximum profit to 0.
 
         for (int price : prices) {
             // Update the minimum price if the current price is smaller.
-            minPrice = std::min(minPrice, price);
+            minPrice = min(minPrice, price);
 
             // Calculate the potential profit if we sell at the current price.
             int potentialProfit = price - minPrice;
 
             // Update the maximum profit if the potential profit is greater.
-            maxProfit = std::max(maxProfit, potentialProfit);
+            maxProfit = max(maxProfit, potentialProfit);
         }
 
         return maxProfit;
@@ -25,16 +27,16 @@ public:
 
 int main() {
     // Example 1
-    std::vector<int> prices1 = {7, 1, 5, 3, 6, 4};
+    vector<int> prices1 = {7, 1, 5, 3, 6, 4};
     Solution solution1;
     int profit1 = solution1.maxProfit(prices1);
-    std::cout << "Example 1 Output: " << profit1 << std::endl;
+    cout << "Example 1 Output: " << profit1 << endl;
 
     // Example 2
-    std::vector<int> prices2 = {7, 6, 4, 3, 1};
+    vector<int> prices2 = {7, 6, 4, 3, 1};
     Solution solution2;
     int profit2 = solution2.maxProfit(prices2);
-    std::cout << "Example 2 Output: " << profit2 << std::endl;
+    cout << "Example 2 Output: " << profit2 << endl;
 
     return 0;
 }
@@ -66,3 +68,46 @@ int main() {
 // The function returns 0, which is printed as "Example 2 Output: 0."
 
 
+
+
+
+
+// JAVA
+
+import java.util.Arrays;
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE; // Initialize the minimum price to a large value.
+        int maxProfit = 0;                 // Initialize the maximum profit to 0.
+
+        for (int price : prices) {
+            // Update the minimum price if the current price is smaller.
+            minPrice = Math.min(minPrice, price);
+
+            // Calculate the potential profit if we sell at the current price.
+            int potentialProfit = price - minPrice;
+
+            // Update the maximum profit if the potential profit is greater.
+            maxProfit = Math.max(maxProfit, potentialProfit);
+        }
+
+        return maxProfit;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Example 1
+        int[] prices1 = {7, 1, 5, 3, 6, 4};
+        Solution solution1 = new Solution();
+        int profit1 = solution1.maxProfit(prices1);
+        System.out.println("Example 1 Output: " + profit1);
+
+        // Example 2
+        int[] prices2 = {7, 6, 4, 3, 1};
+        Solution solution2 = new Solution();
+        int profit2 = solution2.maxProfit(prices2);
+        System.out.println("Example 2 Output: " + profit2);
+    }
+}
