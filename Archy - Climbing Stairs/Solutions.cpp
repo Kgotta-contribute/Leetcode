@@ -49,3 +49,38 @@ int main() {
 
 // The final result is dp[4] = 5, which means there are 5 distinct ways to climb to the top with n = 4 steps.
 // So, for n = 4, the function returns 5.
+
+
+
+
+
+
+
+
+
+// JAVA
+
+
+public class Solution {
+    public int climbStairs(int n) {
+        if (n <= 2) {
+            return n;
+        }
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for (int i = 3; i <= n; ++i) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int n1 = 2;
+        System.out.println("Example 1: " + solution.climbStairs(n1));
+        int n2 = 3;
+        System.out.println("Example 2: " + solution.climbStairs(n2));
+    }
+}

@@ -24,7 +24,6 @@ public:
         return maxProfit;
     }
 };
-
 int main() {
     // Example 1
     vector<int> prices1 = {7, 1, 5, 3, 6, 4};
