@@ -120,3 +120,47 @@ int main()
 // ------------------------------------
 // After step 2, the count `cnt` will be 2. The subarrays with XOR equal to `k` are: [4, 2] and [2, 2, 6].
 
+
+
+
+
+
+
+
+// JAVA
+
+import java.util.*;
+
+public class Main {
+    public static int subarraysWithXorK(ArrayList<Integer> a, int k) {
+        int n = a.size(); // size of the given array.
+        int xr = 0;
+        Map<Integer, Integer> mpp = new HashMap<>(); // declaring the map.
+        mpp.put(xr, 1); // setting the value of 0.
+        int cnt = 0;
+
+        for (int i = 0; i < n; i++) {
+            // prefix XOR till index i:
+            xr = xr ^ a.get(i);
+
+            // By formula: x = xr^k:
+            int x = xr ^ k;
+
+            // add the occurrence of xr^k
+            // to the count:
+            cnt += mpp.getOrDefault(x, 0);
+
+            // Insert the prefix xor till index i
+            // into the map:
+            mpp.put(xr, mpp.getOrDefault(xr, 0) + 1);
+        }
+        return cnt;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> a = new ArrayList<>(Arrays.asList(4, 2, 2, 6, 4));
+        int k = 6;
+        int ans = subarraysWithXorK(a, k);
+        System.out.println("The number of subarrays with XOR k is: " + ans);
+    }
+}
