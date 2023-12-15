@@ -67,7 +67,6 @@ int main() {
 // Here's how the code progresses:
 
 // Initial Call: invertTree(root) with root as the root of the tree (4).
-
 // First Call (root=4):
 
 // temp is assigned the value of root->right, which is 7.
