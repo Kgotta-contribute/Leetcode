@@ -10,6 +10,9 @@ bool isSubset(int arr1[], int m, int arr2[], int n) {
     }
 
     for (int i = 0; i < n; i++) {
+        /* This line checks if the element arr2[i] is present in the hashset.
+hashset.find(arr2[i]): This line returns an iterator to the first occurrence of the element arr2[i] in the hashset.
+hashset.end(): This is the end iterator of the hashset, used to indicate that the element is not present in the hashset.*/
         if (hashset.find(arr2[i]) == hashset.end()) {
             return false;
         }
