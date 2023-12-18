@@ -104,6 +104,167 @@ int main() {
     return 0;
 }
 
+/*
+example `s1 = "rabbbit"` and `t1 = "rabbit"`:
+
+1. **Initialization:**
+   - `dp[0][j]` is initialized to 1 for all `j` (columns). This is because, for an empty string `t`, there 
+   is one subsequence in any string `s` (the empty subsequence).
+   - In the code, the loop `for (int j = 0; j <= n; j++)` sets `dp[0][j] = 1` for all `j`, initializing the first row.
+
+   ```
+   dp array after initialization: {{1, 1, 1, 1, 1, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0}}
+   ```
+
+2. **Main Iterations:**
+   - The nested loops (`for (int i = 1; i <= m; i++)` and `for (int j = 1; j <= n; j++)`) iterate over each cell in 
+   the `dp` array, starting from `i=1` and `j=1`.
+
+   - **Iteration 1 (i=1, j=1):**
+     - `t[0] = 'r', s[0] = 'r'`: Characters match!
+     - `dp[1][1] = dp[0][0] + dp[1][0] = 1 + 0 = 1`
+     - The value in the cell `dp[1][1]` represents the number of distinct subsequences of `"r"` in `"r"`.
+
+   - **Iteration 2 (i=1, j=2):**
+     - `t[0] = 'r', s[1] = 'a'`: No match, copy from the previous cell in the same row.
+     - `dp[1][2] = dp[1][1] = 1`
+     - The value in the cell `dp[1][2]` represents the number of distinct subsequences of `"r"` in `"ra"`.
+
+   - **Iteration 3 (i=1, j=3):**
+     - `t[0] = 'r', s[2] = 'b'`: No match, copy from the previous cell in the same row.
+     - `dp[1][3] = dp[1][2] = 1`
+     - The value in the cell `dp[1][3]` represents the number of distinct subsequences of `"r"` in `"rab"`.
+
+   - ... Continue these iterations until you complete the row.
+
+   ```
+   dp array after all iterations: {{1, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1}}
+   ```
+
+3. **Final Result:**
+   - The final result is obtained from `dp[m][n]`, which represents the number of distinct subsequences of `t1` in `s1`.
+
+   ```
+   Result: dp[2][7] = 3
+   ```
+
+   - The value `3` indicates that there are 3 distinct subsequences of `"rabbit"` in `"rabbbit"`: {"ra_b_", "rab_b_", "rabb_it"}.
+
+The values in `dp[i][j]` represent the number of distinct subsequences of the substring `t[0..i-1]` in 
+the substring `s[0..j-1]`. The dynamic programming approach efficiently calculates these values based on whether the 
+characters at the current positions match or not.
+
+
+
+
+iterations after `i=1, j=3`:
+
+- **Iteration 4 (i=1, j=4):**
+  - `t[0] = 'r', s[3] = 'b'`: No match, copy from the previous cell in the same row.
+  - `dp[1][4] = dp[1][3] = 1`
+  - The value in the cell `dp[1][4]` represents the number of distinct subsequences of `"r"` in `"rabb"`.
+
+- **Iteration 5 (i=1, j=5):**
+  - `t[0] = 'r', s[4] = 'b'`: No match, copy from the previous cell in the same row.
+  - `dp[1][5] = dp[1][4] = 1`
+  - The value in the cell `dp[1][5]` represents the number of distinct subsequences of `"r"` in `"rabbb"`.
+
+- **Iteration 6 (i=1, j=6):**
+  - `t[0] = 'r', s[5] = 'i'`: No match, copy from the previous cell in the same row.
+  - `dp[1][6] = dp[1][5] = 1`
+  - The value in the cell `dp[1][6]` represents the number of distinct subsequences of `"r"` in `"rabbbi"`.
+
+- **Iteration 7 (i=1, j=7):**
+  - `t[0] = 'r', s[6] = 't'`: No match, copy from the previous cell in the same row.
+  - `dp[1][7] = dp[1][6] = 1`
+  - The value in the cell `dp[1][7]` represents the number of distinct subsequences of `"r"` in `"rabbbit"`.
+
+Now, the row for `i=1` is complete:
+
+```
+dp array after iteration 7: {{1, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1}}
+```
+
+- **Iteration 8 (i=2, j=1):**
+  - `t[1] = 'a', s[0] = 'r'`: No match, copy from the cell above in the same column.
+  - `dp[2][1] = dp[1][1] = 1`
+  - The value in the cell `dp[2][1]` represents the number of distinct subsequences of `"ra"` in `"r"`.
+
+- **Iteration 9 (i=2, j=2):**
+  - `t[1] = 'a', s[1] = 'a'`: Characters match!
+  - `dp[2][2] = dp[1][1] + dp[2][1] = 1 + 1 = 2`
+  - The value in the cell `dp[2][2]` represents the number of distinct subsequences of `"ra"` in `"raa"`.
+
+- ... Continue these iterations until you complete the entire `dp` array.
+
+The final `dp` array would look like this:
+
+```
+{{1, 0, 0, 0, 0, 0, 0},
+ {0, 1, 1, 1, 1, 1, 1},
+ {0, 1, 1, 2, 2, 2, 3}}
+```
+
+And the result would be obtained from `dp[m][n] = dp[2][7] = 3`, indicating that there are 3 distinct 
+subsequences of `"rabbit"` in `"rabbbit"`: {"ra_b_", "rab_b_", "rabb_it"}.
+
+
+
+
+
+
+
+- **Iteration 8 (i=2, j=3):**
+  - `t[1] = 'a', s[2] = 'b'`: No match, copy from the cell above in the same column.
+  - `dp[2][3] = dp[2][2] = 2`
+  - The value in the cell `dp[2][3]` represents the number of distinct subsequences of `"ra"` in `"rabb"`.
+
+- **Iteration 9 (i=2, j=4):**
+  - `t[1] = 'a', s[3] = 'b'`: No match, copy from the cell above in the same column.
+  - `dp[2][4] = dp[2][3] = 2`
+  - The value in the cell `dp[2][4]` represents the number of distinct subsequences of `"ra"` in `"rabbb"`.
+
+- **Iteration 10 (i=2, j=5):**
+  - `t[1] = 'a', s[4] = 'b'`: No match, copy from the cell above in the same column.
+  - `dp[2][5] = dp[2][4] = 2`
+  - The value in the cell `dp[2][5]` represents the number of distinct subsequences of `"ra"` in `"rabbbi"`.
+
+- **Iteration 11 (i=2, j=6):**
+  - `t[1] = 'a', s[5] = 'i'`: No match, copy from the cell above in the same column.
+  - `dp[2][6] = dp[2][5] = 2`
+  - The value in the cell `dp[2][6]` represents the number of distinct subsequences of `"ra"` in `"rabbbit"`.
+
+- **Iteration 12 (i=2, j=7):**
+  - `t[1] = 'a', s[6] = 't'`: No match, copy from the cell above in the same column.
+  - `dp[2][7] = dp[2][6] = 2`
+  - The value in the cell `dp[2][7]` represents the number of distinct subsequences of `"ra"` in `"rabbbit"`.
+
+Now, the row for `i=2` is complete:
+
+```
+dp array after iteration 12: {{1, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1}, {0, 1, 1, 2, 2, 2, 3}}
+```
+
+
+Certainly! Here's the final `dp` array after all iterations:
+
+```
+{{1, 0, 0, 0, 0, 0, 0},
+ {0, 1, 1, 1, 1, 1, 1},
+ {0, 1, 1, 2, 2, 2, 3}}
+```
+
+In this array:
+
+- `dp[0][0]` represents the number of distinct subsequences of an empty string `""` in an empty string `""`, which is 1.
+
+- `dp[1][j]` represents the number of distinct subsequences of `"r"` in the substring `"rabbbit"` for different values of `j`.
+
+- `dp[2][j]` represents the number of distinct subsequences of `"ra"` in the substring `"rabbbit"` for different values of `j`.
+
+- The result is obtained from `dp[2][7]`, which represents the number of distinct subsequences of `"rabbit"` in `"rabbbit"`. 
+The value is `3`, indicating there are 3 distinct subsequences: {"ra_b_", "rab_b_", "rabb_it"}.
+*/
 
 
 
