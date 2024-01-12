@@ -1,0 +1,494 @@
+PCA P2
+
+import pandas as pd
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+# Load Iris dataset from CSV file
+# Assuming the CSV file is named 'iris_dataset.csv'
+df = pd.read_csv('Iris.csv')
+
+# Separate features and labels
+X = df.drop(["Id", "Species"], axis=1)
+
+# Perform PCA
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Plot the first two principal components
+plt.figure(figsize=(8, 6))
+#  [:, 0] and [:, 1] refer to the first and second principal components, respectively.
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=df["Species"].astype("category").cat.codes, cmap="viridis")
+plt.title("PCA of Iris Dataset")
+plt.xlabel("First Principal Component")
+plt.ylabel("Second Principal Component")
+plt.show()
+
+
+
+
+
+
+
+
+
+P1 mean median mode:
+
+import numpy as np
+from scipy import stats
+
+data = np.array([115.3,195.5, 120.5, 110.2, 90.4, 105.6, 110.9, 116.3, 122.3, 125.4])
+
+mean1 = np.mean(data)
+
+median1 = np.median(data)
+
+stdDev = np.std(data)
+
+variance = np.var(data)
+
+mode = stats.mode(data)
+#modeR = mode + modeR[0] if mode.count[0] > 1 else "No mode"
+
+minVal = np.min(data)
+maxVal = np.max(data)
+normalR = (data - minVal) / (maxVal - minVal)
+
+z_score = (data-mean1)/stdDev
+
+print("mean: " , mean1)
+print("median: ", median1)
+print("modeR: ", mode)
+print("stdDev: ", stdDev)
+print("variance: ",variance)
+print("normalR: ", normalR)
+print("z_score: ", z_score)
+
+
+
+
+
+
+
+
+
+
+
+KMeans P3 :
+
+import numpy as np
+from sklearn.cluster import KMeans
+
+# Assuming X is the dataset, and centers are the initial cluster centers
+X = np.array([
+    [5, 3.2],
+    [4.6, 2.9],
+    [6.2, 2.8],
+    [7, 3.2],
+    [5.5, 4.2],
+    [5.0, 3.0],
+    [4, 3.1],
+    [7, 3.1],
+    [1, 3.8],
+    [6.0, 3.0]
+])
+
+initial_centers = np.array([
+    [6.2, 3.2],
+    [6.6, 3.7],
+    [6.5, 3.0]
+])
+
+# Run k-means clustering with k=3
+kmeans = KMeans(n_clusters=3, init=initial_centers, n_init=1, random_state=0)
+kmeans.fit(X)
+
+# Retrieve the cluster centers and number of iterations
+cluster_centers = kmeans.cluster_centers_
+iterations = kmeans.n_iter_
+
+# Print results
+print("Cluster Centers:")
+print("Red Cluster (iteration 1):", np.round(cluster_centers[0], 3))
+print("Green Cluster (iteration 2):", np.round(cluster_centers[1], 3))
+print("Blue Cluster (converged):", np.round(cluster_centers[2], 3))
+print("Number of iterations:", iterations)
+
+
+
+
+
+
+
+
+
+
+
+
+P4 DECISION TREES :
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import confusion_matrix, classification_report
+
+# Load datasets
+class_data = pd.read_csv('class.csv')
+zoo_data = pd.read_csv('zoo.csv')
+
+# Merge datasets on the 'class_type' column
+merged_data = pd.merge(zoo_data, class_data, how='inner', left_on='class_type', right_on='Class_Number')
+
+# Select relevant features and target
+X = merged_data[['hair', 'feathers', 'eggs', 'milk', 'airborne', 'aquatic', 'predator', 'toothed', 'backbone', 'breathes', 'venomous', 'fins', 'legs', 'tail', 'domestic', 'catsize']]
+y = merged_data['Class_Type']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Build a decision tree classifier
+tree_classifier = DecisionTreeClassifier()
+tree_classifier.fit(X_train, y_train)
+
+# Predict on the test set
+y_pred = tree_classifier.predict(X_test)
+
+# Generate confusion matrix
+conf_matrix = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:")
+print(conf_matrix)
+
+# Generate classification report
+# class_report = classification_report(y_test, y_pred, target_names=class_data['Class_Type'].values)
+# print("Classification Report:")
+# print(class_report)
+# Generate classification report with zero_division parameter
+class_report = classification_report(y_test, y_pred, target_names=class_data['Class_Type'].values, zero_division=1)
+print("Classification Report:")
+print(class_report)
+
+
+
+
+
+
+
+
+
+
+
+P5 LINEAR REGRESSION :
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load the dataset from a CSV file
+data = pd.read_csv("Foodtruck.csv")
+
+# Extract the X and y data
+X = data['Population'].values
+y = data['Profit'].values
+
+# Create a scatter plot
+plt.figure(figsize=(8, 6))
+plt.scatter(X, y, c='b', label='Data Points')
+plt.xlabel('Population')
+plt.ylabel('Profit')
+plt.title('Scatter Plot of the Data')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Compute the correlation matrix
+correlation_matrix = np.corrcoef(X, y)
+print("Correlation Matrix:")
+print(correlation_matrix)
+
+# Calculate the coefficients of the linear regression
+X_mean, y_mean = np.mean(X), np.mean(y)
+numerator, denominator = 0, 0
+for i in range(len(X)):
+    numerator += (X[i] - X_mean) * (y[i] - y_mean)
+    denominator += (X[i] - X_mean) ** 2
+
+slope = numerator / denominator
+intercept = y_mean - slope * X_mean
+print("Linear Regression Parameters:")
+print(f"Slope (m): {slope}")
+print(f"Intercept (b): {intercept}")
+
+# Predicted values
+y_pred = slope * X + intercept
+
+# Residuals
+residuals = y - y_pred
+
+# Calculate the Sum of Squared Errors (SSE)
+SSE = np.sum(residuals**2)
+
+# Calculate the Sum of Squares Regression (SSR)
+SSR = np.sum((y_pred - y_mean)**2)
+
+# Calculate the Total Sum of Squares (SST)
+SST = np.sum((y - y_mean)**2)
+
+# Calculate the Coefficient of Determination (R-squared)
+R2 = 1 - (SSE / SST)
+
+# Calculate the Cost (mean squared error)
+Cost = SSE / len(X)
+
+print("SSE:", SSE)
+print("SSR:", SSR)
+print("SST:", SST)
+print("R-squared (R2):", R2)
+print("Cost (MSE):", Cost)
+
+
+
+
+
+
+
+
+
+
+P6 : LOGISTIC REGRESSION :
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Read the CSV file into a DataFrame
+df = pd.read_csv('Student-University.csv', header=None, names=['Feature1', 'Feature2', 'Label'])
+
+# Display the original dataset
+print("Original Dataset:")
+print(df)
+
+# Handling noise, NaNs, and missing value imputation
+# In this example, we assume there is no noise, NaNs, or missing values in the dataset.
+
+# Split the data into features (X) and labels (y)
+X = df[['Feature1', 'Feature2']]
+y = df['Label']
+
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Standardize the features using StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Perform logistic regression using gradient descent
+lr_model = LogisticRegression(multi_class='ovr', solver='lbfgs')
+lr_model.fit(X_train_scaled, y_train)
+
+# Make predictions on the test set
+y_pred = lr_model.predict(X_test_scaled)
+
+# Display the results
+print("\nLogistic Regression Parameters:")
+print("Coefficients:", lr_model.coef_)
+print("Intercept:", lr_model.intercept_)
+
+# Compute accuracy on the test set
+accuracy = accuracy_score(y_test, y_pred)
+print("\nAccuracy on the Test Set:", accuracy)
+
+
+
+
+
+
+
+
+
+
+
+
+
+P7 NAIVE BAYES :
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_curve, auc
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('data_vowel_bayes.csv')  # Replace with the actual COVID dataset
+
+# Assuming the last column is the target variable
+X = data.iloc[:, :-1] 
+y = data.iloc[:, -1]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+classifier = GaussianNB()
+classifier.fit(X_train, y_train)
+
+y_pred = classifier.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, average='weighted')  # Specify the 'average' parameter
+recall = recall_score(y_test, y_pred, average='weighted')  # Specify the 'average' parameter
+f1 = f1_score(y_test, y_pred, average='weighted')  # Specify the 'average' parameter
+
+print(f"Accuracy: {accuracy}")
+print(f"Precision: {precision}")
+print(f"Recall: {recall}")
+print(f"F1 Score: {f1}")
+
+# For ROC curve, you may need to use one-hot encoding for multiclass problems
+# Here is a simple example for binary classification
+fpr, tpr, thresholds = roc_curve(y_test, y_pred, pos_label=1)
+roc_auc = auc(fpr, tpr)
+
+plt.figure()
+plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (area = {roc_auc:.2f})')
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic')
+plt.legend(loc='lower right')
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+P8 RANDOM FOREST:
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# Load the dataset from CSV
+df = pd.read_csv('lung_cancer_dataset.csv')
+
+# Convert categorical features to numerical
+df['GENDER'] = df['GENDER'].map({'M': 0, 'F': 1})
+df['LUNG_CANCER'] = df['LUNG_CANCER'].map({'NO': 0, 'YES': 1})
+
+# Handling missing values (you may need a more sophisticated approach)
+df.fillna(0, inplace=True)
+
+# Separate features and target variable
+X = df.drop('LUNG_CANCER', axis=1)
+y = df['LUNG_CANCER']
+
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train a Decision Tree classifier
+dt_classifier = DecisionTreeClassifier(random_state=42)
+dt_classifier.fit(X_train, y_train)
+
+# Create and train a Random Forest classifier
+rf_classifier = RandomForestClassifier(random_state=42)
+rf_classifier.fit(X_train, y_train)
+
+# Make predictions
+dt_predictions = dt_classifier.predict(X_test)
+rf_predictions = rf_classifier.predict(X_test)
+
+# Evaluate performance
+print("Decision Tree Accuracy:", accuracy_score(y_test, dt_predictions))
+print("Random Forest Accuracy:", accuracy_score(y_test, rf_predictions))
+
+# Compare other metrics
+print("\nDecision Tree Classification Report:\n", classification_report(y_test, dt_predictions))
+print("\nRandom Forest Classification Report:\n", classification_report(y_test, rf_predictions))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+P9 SVM: 
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn import svm
+from sklearn.metrics import confusion_matrix
+
+# Load the dataset
+data = pd.read_csv("heart.csv")
+
+# Separate the data
+x = data.drop('target', axis=1)
+y = data.target
+
+# Split the dataset into training and testing sets
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=109)
+
+# Create SVM classifiers with different kernels
+kernels = ['linear', 'rbf', 'poly', 'sigmoid']
+for kernel in kernels:
+    print(f"\nKernel: {kernel}")
+    
+    # Create a SVM Classifier
+    ml = svm.SVC(kernel=kernel)
+    
+    # Train the model using the training sets
+    ml.fit(x_train, y_train)
+    
+    # Predict the response for the test dataset
+    y_pred = ml.predict(x_test)
+    
+    # Confusion matrix
+    cm = confusion_matrix(y_test, y_pred)
+    print('\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in cm]))
+    
+    FP = cm.sum(axis=0) - np.diag(cm)
+    FN = cm.sum(axis=1) - np.diag(cm)
+    TP = np.diag(cm)
+    TN = cm.sum() - (FP + FN + TP)
+    print('False Positives\n {}'.format(FP))
+    print('False Negatives\n {}'.format(FN))
+    print('True Positives\n {}'.format(TP))
+    print('True Negatives\n {}'.format(TN))
+    TPR = TP / (TP + FN)
+    print('Sensitivity \n {}'.format(TPR))
+    TNR = TN / (TN + FP)
+    print('Specificity \n {}'.format(TNR))
+    Precision = TP / (TP + FP)
+    print('Precision \n {}'.format(Precision))
+    Recall = TP / (TP + FN)
+    print('Recall \n {}'.format(Recall))
+    Acc = (TP + TN) / (TP + TN + FP + FN)
+    print('Accuracy \n{}'.format(Acc))
+    Fscore = 2 * (Precision * Recall) / (Precision + Recall)
+    print('FScore \n{}'.format(Fscore))
