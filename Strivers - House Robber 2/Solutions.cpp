@@ -7,31 +7,21 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         int n = nums.size();
-        
         if (n == 1) {
             return nums[0];
         }
-        
-        // Rob the first house to the second-to-last house
-        int max1 = robRange(nums, 0, n - 2);
-        
-        // Rob the second house to the last house
-        int max2 = robRange(nums, 1, n - 1);
-        
-        return max(max1, max2);
+        return max(robHelper(nums, 0, n-2), robHelper(nums, 1, n-1));
     }
-    
-    int robRange(vector<int>& nums, int start, int end) {
-        int prevMax = 0;
-        int currMax = 0;
-        
+
+    int robHelper(vector<int>& nums, int start, int end) {
+        int prev1 = 0;
+        int prev2 = 0;
         for (int i = start; i <= end; i++) {
-            int temp = currMax;
-            currMax = max(prevMax + nums[i], currMax);
-            prevMax = temp;
+            int temp = prev1;
+            prev1 = max(prev2 + nums[i], prev1);
+            prev2 = temp;
         }
-        
-        return currMax;
+        return prev1;
     }
 };
 
@@ -57,4 +47,32 @@ int main() {
     cout << "Output for example 3: " << maxAmount3 << endl;
 
     return 0;
+}
+
+
+
+
+//////////////////////// JAVA ///////////////////////////////
+
+
+
+class Solution {
+    public int rob(int[] nums) {
+        int n = nums.length;
+        if (n == 1) {
+            return nums[0];
+        }
+        return Math.max(robHelper(nums, 0, n-2), robHelper(nums, 1, n-1));
+    }
+    
+    private int robHelper(int[] nums, int start, int end) {
+        int prev1 = 0;
+        int prev2 = 0;
+        for (int i = start; i <= end; i++) {
+            int temp = prev1;
+            prev1 = Math.max(prev2 + nums[i], prev1);
+            prev2 = temp;
+        }
+        return prev1;
+    }
 }
