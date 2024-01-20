@@ -15,7 +15,7 @@ int findKRotation(const vector<int> &arr) {
             return mid + 1;  // Rotation point found
         }
         // Check if the left half is unsorted (contains rotation point)
-        if (arr[mid] < arr[low]) {
+        if (arr[low] > arr[mid]) {
             high = mid - 1;  // Search in the left half
         } else {
             low = mid + 1;   // Search in the right half

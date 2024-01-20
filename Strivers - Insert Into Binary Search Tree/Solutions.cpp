@@ -30,7 +30,7 @@ public:
 void inOrderTraversal(TreeNode* root) {
     if (root) {
         inOrderTraversal(root->left);
-        std::cout << root->val << " ";
+        cout << root->val << " ";
         inOrderTraversal(root->right);
     }
 }
@@ -50,7 +50,7 @@ int main() {
 
     // Print the in-order traversal of the resulting tree
     inOrderTraversal(result1);
-    std::cout << std::endl;
+    cout << endl;
 
     // Create the second BST as given in the example
     TreeNode* root2 = new TreeNode(40);
@@ -68,7 +68,7 @@ int main() {
 
     // Print the in-order traversal of the resulting tree
     inOrderTraversal(result2);
-    std::cout << std::endl;
+    cout << endl;
 
     // Clean up the memory by deleting the tree nodes (not shown in the original code)
     
