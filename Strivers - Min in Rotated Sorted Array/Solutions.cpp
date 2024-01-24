@@ -2,28 +2,28 @@
 using namespace std;
 int findMin(vector<int>& arr)
 {
-    int low = 0, high = arr.size() - 1, ans = INT_MAX;
-    while(low <= high)
+    int left = 0, right = arr.size() - 1, ans = INT_MAX;
+    while(left <= right)
     {
-        int mid = (low + high) / 2;
+        int mid = (left + right) / 2;
         //search space is already sorted like left half is sorted & right half is sorted in another way
-        if(arr[low] <= arr[high])
+        if(arr[left] <= arr[right])
         {
-            ans = min(ans, arr[low]);
+            ans = min(ans, arr[left]);
             break;
         }
         //if left part is sorted
-        if(arr[low] <= arr[mid])
+        if(arr[left] <= arr[mid])
         {
-            ans = min(ans, arr[low]);
+            ans = min(ans, arr[left]);
             //eliminate the left half
-            low = mid + 1;
+            left = mid + 1;
         }
         else
         {
             ans = min(ans, arr[mid]);
             //eliminate the right half
-            high = mid - 1;
+            right = mid - 1;
         }
     }
     return ans;
@@ -38,59 +38,60 @@ int main()
 
 
 
+// OR 
 
 
 
+#include <iostream>
+#include <vector>
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int left = 0;
+        int right = nums.size() - 1;
 
-// #include <iostream>
-// #include <vector>
+        while (left < right) {
+            int mid = left + (right - left) / 2;
 
-// class Solution {
-// public:
-//     int findMin(std::vector<int>& nums) {
-//         int left = 0;
-//         int right = nums.size() - 1;
+            // If mid element is greater than the last element,
+            // the minimum element must be in the right subarray.
+            if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            }
+            // If mid element is less than or equal to the last element,
+            // the minimum element must be in the left subarray.
+            else {
+                right = mid;
+            }
+        }
 
-//         while (left < right) {
-//             int mid = left + (right - left) / 2;
+        // Left will be pointing to the minimum element.
+        return nums[left];
+    }
+};
 
-//             // If mid element is greater than the last element,
-//             // the minimum element must be in the right subarray.
-//             if (nums[mid] > nums[right]) {
-//                 left = mid + 1;
-//             }
-//             // If mid element is less than or equal to the last element,
-//             // the minimum element must be in the left subarray.
-//             else {
-//                 right = mid;
-//             }
-//         }
+int main() {
+    Solution solution;
 
-//         // Left will be pointing to the minimum element.
-//         return nums[left];
-//     }
-// };
+    //  1
+    vector<int> nums1 = {3, 4, 5, 1, 2};
+    int result1 = solution.findMin(nums1);
+    cout << " 1: " << result1 << endl;
 
-// int main() {
-//     Solution solution;
+    //  2
+    vector<int> nums2 = {4, 5, 6, 7, 0, 1, 2};
+    int result2 = solution.findMin(nums2);
+    cout << " 2: " << result2 << endl;
 
-//     // Example 1
-//     std::vector<int> nums1 = {3, 4, 5, 1, 2};
-//     int result1 = solution.findMin(nums1);
-//     std::cout << "Example 1: " << result1 << std::endl;
+    //  3
+    vector<int> nums3 = {11, 13, 15, 17};
+    int result3 = solution.findMin(nums3);
+    cout << " 3: " << result3 << endl;
 
-//     // Example 2
-//     std::vector<int> nums2 = {4, 5, 6, 7, 0, 1, 2};
-//     int result2 = solution.findMin(nums2);
-//     std::cout << "Example 2: " << result2 << std::endl;
-
-//     // Example 3
-//     std::vector<int> nums3 = {11, 13, 15, 17};
-//     int result3 = solution.findMin(nums3);
-//     std::cout << "Example 3: " << result3 << std::endl;
-
-//     return 0;
-// }
+    return 0;
+}
 
 
 
