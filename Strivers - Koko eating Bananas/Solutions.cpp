@@ -1,3 +1,65 @@
+// FOUND THIS BETTER APPROACH :
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int left = 1, right = *max_element(piles.begin(), piles.end());
+// max_element(piles.begin(), piles.end()) returns an iterator pointing to the maximum element in the range [piles.begin(), piles.end()).
+//*max_element(piles.begin(), piles.end()) dereferences the iterator, giving the actual maximum element in the vector. ie max = 11 in 1st example
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+
+            int hoursNeeded = 0;
+            for (int bananas : piles) {
+                hoursNeeded += (bananas + mid - 1) / mid;
+            }
+
+            if (hoursNeeded <= h) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return left;
+    }
+};
+
+int main() {
+    //  1
+    Solution sol;
+    vector<int> piles1 = {3, 6, 7, 11};
+    int h1 = 8;
+    int result1 = sol.minEatingSpeed(piles1, h1);
+    cout << " 1 Output: " << result1 << endl;
+
+    //  2
+    vector<int> piles2 = {30, 11, 23, 4, 20};
+    int h2 = 5;
+    int result2 = sol.minEatingSpeed(piles2, h2);
+    cout << " 2 Output: " << result2 << endl;
+
+    //  3
+    vector<int> piles3 = {30, 11, 23, 4, 20};
+    int h3 = 6;
+    int result3 = sol.minEatingSpeed(piles3, h3);
+    cout << " 3 Output: " << result3 << endl;
+
+    return 0;
+}
+
+
+
+===================================================================
+
+
+
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
