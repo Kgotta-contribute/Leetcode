@@ -1,10 +1,10 @@
 #include <vector>
-
+#include<iostream>
+using namespace std;
 class Solution {
 public:
-    int removeElement(std::vector<int>& nums, int val) {
+    int removeElement(vector<int>& nums, int val) {
         int k = 0;  // Variable to keep track of the count of elements not equal to val
-        
         for (int i = 0; i < nums.size(); ++i) {
             if (nums[i] != val) {
                 if (i != k) {
