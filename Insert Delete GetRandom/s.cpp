@@ -51,3 +51,21 @@ int main() {
     int newRandomValue = randomizedSet.getRandom();  // Random index: 0
     return 0;
 }
+
+/*
+nums: [1, 2, 3, 4, 5]
+mp: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4}
+
+Iteration 1:
+Value to remove: val = 3
+if (!mp.count(val)): Check if the value 3 is present in the set. It is present, so continue to the next step.
+int idx = mp[val];: Retrieve the index of the value 3 from the mp mapping. idx = 2
+mp[nums.back()] = idx;: Update the mapping for the last element (5) with the index of the element to be removed (3). Update mp: {1: 0, 2: 1, 3: 2, 4: 3, 5: 2}
+std::swap(nums[idx], nums.back());: Swap the element at index 2 (value 3) with the last element in the nums vector (value 5). Update nums: [1, 2, 5, 4, 3]
+nums.pop_back();: Remove the last element from the nums vector. Update nums: [1, 2, 5, 4]
+mp.erase(val);: Remove the value 3 from the mp mapping. Update mp: {1: 0, 2: 1, 4: 3, 5: 2}
+
+The state after Iteration 1:
+nums: [1, 2, 5, 4]
+mp: {1: 0, 2: 1, 4: 3, 5: 2}
+*/
