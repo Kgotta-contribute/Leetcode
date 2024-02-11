@@ -62,7 +62,6 @@ class Solution {
             int sum = numbers[left] + numbers[right];
 
             if (sum == target) {
-                // 1-indexed array
                 return new int[]{left + 1, right + 1};
             } else if (sum < target) {
                 left++;
@@ -70,7 +69,6 @@ class Solution {
                 right--;
             }
         }
-        // It is guaranteed that there is exactly one solution, so no need to handle the case where no solution is found.
         return new int[0];
     }
 }

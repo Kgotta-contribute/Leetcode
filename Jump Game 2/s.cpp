@@ -20,7 +20,6 @@ public:
                 steps++;
             }
         }
-
         return steps;
     }
 };
