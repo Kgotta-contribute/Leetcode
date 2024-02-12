@@ -7,6 +7,7 @@ class Node {
 public:
     int value;
     vector<Node*> neighbors;
+    
     Node() {
         value = 0;
         neighbors = vector<Node*>(); // Initialize the neighbors vector
