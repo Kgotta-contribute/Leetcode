@@ -10,10 +10,10 @@ public:
 
         for (int i = 0; i < nums.size(); i++) 
         {
-            if (mp.find(target - nums[i]) == mp.end())
-                mp[nums[i]] = i;            // eg : (mp[2] = 0)
+            if (mp.find(target - nums[i]) == mp.end())      // mp.find(7)-> cond is true so map is empty, mp.find(2)
+                mp[nums[i]] = i;            // eg : (mp[2] = 0),  
             else
-                return {mp[target - nums[i]], i};
+                return {mp[target - nums[i]], i};           // (mp[2], 1) which gives {0,1}
         }
         return {-1, -1};
     }

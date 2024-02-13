@@ -3,7 +3,7 @@
 using namespace std;
 
 int maxProfit(vector<int> &prices) 
-{
+{// Input: vector<int> prices1 = {7, 1, 5, 3, 6, 4};
     int maxProfit = 0;
     int minPrice = prices[0];
     for (int i = 1; i < prices.size(); i++) 
@@ -12,7 +12,7 @@ int maxProfit(vector<int> &prices)
         {
             minPrice = prices[i];
         } 
-        else if (prices[i] - minPrice > maxProfit) 
+        else if (maxProfit < prices[i] - minPrice) 
         {
             maxProfit = prices[i] - minPrice;
         }
