@@ -24,37 +24,3 @@ int main() {
   }
 }
 
-
-
-//#include <vector>
-//
-//int removeDuplicates(std::vector<int>& nums) {
-//    int n = nums.size();
-//    if (n <= 1)
-//        return n;
-//
-//    int index = 1;
-//    for (int i = 1; i < n; i++) {
-//        if (nums[i] != nums[i - 1]) {
-//            nums[index] = nums[i];
-//            index++;
-//        }
-//    }
-//    return index;
-//}
-//
-//int main() {
-//    std::vector<int> nums = {1, 1, 2, 2, 3, 4, 4, 4, 5, 5, 6};
-//    
-//    int newSize = removeDuplicates(nums);
-//
-//    std::cout << "After removing duplicates: ";
-//    for (int i = 0; i < newSize; i++) 
-//	{
-//        std::cout << nums[i] << " ";
-//    }
-//    std::cout << std::endl;
-//
-//    return 0;
-//}
-
