@@ -61,3 +61,74 @@ int main() {
     return 0;
 }
 
+==================================================================================
+
+
+JAVA 
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+  
+  public static void rotateArray(int[] arr, int n, int k, boolean isRight) {
+    if (k == 0) return; // No rotation required
+
+    if (isRight) {
+      // Reverse the entire array
+      reverseArray(arr, 0, n - 1);
+      // Reverse the first K elements
+      reverseArray(arr, 0, k - 1);
+      // Reverse the remaining N-K elements
+      reverseArray(arr, k, n - 1);
+    } else {
+      // Reverse the entire array
+      reverseArray(arr, 0, n - 1);
+      // Reverse the last N-K elements
+      reverseArray(arr, 0, n - k - 1);
+      // Reverse the first K elements
+      reverseArray(arr, n - k, n - 1);
+    }
+  }
+  
+  public static void reverseArray(int[] arr, int start, int end) {
+    while(start < end) {
+      int temp = arr[start];
+      arr[start] = arr[end];
+      arr[end] = temp;
+      start++;
+      end--;
+    }
+  }
+  
+  public static void printArray(int[] arr, int n) {
+    for (int i = 0; i < n; i++) {
+      System.out.print(arr[i] + " ");
+    }
+    System.out.println();
+  }
+  
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Enter the size of the array: ");
+    int n = scanner.nextInt();
+    
+    int[] arr = new int[n];
+    System.out.print("Enter the elements of the array: ");
+    for (int i = 0; i < n; i++) {
+        arr[i] = scanner.nextInt();
+    }
+
+    System.out.print("Enter the value of K shifts: ");
+    int k = scanner.nextInt();
+
+    System.out.print("Enter the rotation direction (0 for left, 1 for right): ");
+    boolean isRight = scanner.nextInt() == 1;
+
+    rotateArray(arr, n, k, isRight);
+
+    System.out.print("Rotated Array: ");
+    printArray(arr, n);
+  }
+}
