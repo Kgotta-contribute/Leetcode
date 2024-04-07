@@ -34,6 +34,45 @@ int main() {
 }
 
 
+========================================================================
+
+java 
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+  public static List<Integer> moveZeros(int n, List<Integer> a) {
+    int nonZeroIndex = 0; // Index to place non-zero elements
+
+    for(int i = 0; i < n; i++) {
+      if(a.get(i) != 0) {
+        a.set(nonZeroIndex++, a.get(i)); // Place non-zero elements at the front
+      }
+    }
+
+    for(int i = nonZeroIndex; i < n; i++) {
+      a.set(i, 0); // Fill the remaining positions with zeros
+    }
+
+    return a;
+  }
+
+  public static void main(String[] args) {
+    List<Integer> arr = List.of(7, 6, 5, 4, 0, 0, 1, 3, 0, 7);
+    int n = arr.size();
+
+    List<Integer> ans = moveZeros(n, new ArrayList<>(arr));
+
+    for(Integer it : ans) {
+      System.out.print(it + " ");
+    }
+    System.out.println();
+  }
+}
+
+
 // #include <iostream>
 // #include<vector>
 // using namespace std;
