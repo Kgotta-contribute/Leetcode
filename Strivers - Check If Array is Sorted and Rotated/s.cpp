@@ -4,11 +4,12 @@ public:
     {
         int n = nums.size();
         int count = 0;
-        for (int i = 0; i < n; i++) 
+        for (int i = 0; i < n; i++)     // 3 4 5 1 2
         {
-            if (nums[i] > nums[(i + 1) % n])
-                count++;
-            if (count > 1)
+            // formula when we rotate an array A then it results into array B
+            if (nums[i] > nums[(i + 1) % n])   // A[i] = B[ (i+x) % A.length() ]     
+                count++;            // if array is sorted and rotated then it will have only one element which is > than the next one.
+            if (count > 1)          // and that exactly is the catch 
                 return false;
         }
         return true;
@@ -16,6 +17,26 @@ public:
 };
 
 -------------------------------------------
+
+
+```java
+
+class Solution {
+    public boolean check(int[] nums) {
+        int n = nums.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > nums[(i + 1) % n]) {
+                count++;
+            }
+            if (count > 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 
 OR 
 
@@ -37,4 +58,4 @@ OR
 //   }
 //   cout << "true\n";
 //   return 0;
-// }
+// }  
