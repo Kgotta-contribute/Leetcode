@@ -1,10 +1,10 @@
 // MUCH BETTER, EASY & EFFICIENT
-#include <iostream>
-#include <vector>
+include <iostream>
+include <vector>
 using namespace std;
 
 vector<int> moveZeros(int n, vector<int> a) {
-    int nonZeroIndex = 0; // Index to place non-zero elements
+  int nonZeroIndex = 0; // Index to place non-zero elements
     
     for(int i = 0; i < n; i++) {
         if(a[i] != 0) {
@@ -73,8 +73,8 @@ public class Main {
 }
 
 
-// #include <iostream>
-// #include<vector>
+// include <iostream>
+// include<vector>
 // using namespace std;
 
 // vector<int> moveZeroes(int n , vector<int> a)
@@ -117,7 +117,7 @@ public class Main {
 	
 // 	return 0;
 // }
-// /*
+// */
 // The auto &it : ans
 // is a range based loop used to iterate over the vector answer
 // auto &it declares a reference variable 'it' that points to each element of the vector answer
