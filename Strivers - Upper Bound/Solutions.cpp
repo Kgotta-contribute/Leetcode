@@ -15,7 +15,7 @@ int upperBound(vector<int> &arr, int x, int n)
         }
         else 
         {
-            low = mid + 1; 
+            low = mid + 1;
         }
     }
     return ans;
@@ -67,3 +67,28 @@ public class Main {
 
 
 
+
+// PYTHON 
+
+def upper_bound(arr, x):
+    low, high = 0, len(arr) - 1
+    ans = len(arr)
+
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] > x:
+            ans = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    return ans
+
+def main():
+    arr = [3, 5, 8, 9, 15, 19]
+    x = 9
+    ind = upper_bound(arr, x)
+    print(f"The upper bound is the index: {ind}")
+
+if __name__ == "__main__":
+    main()

@@ -77,6 +77,35 @@ public class Main {
 
 
 
+
+// PYTHON
+
+def power(x, n):
+    if n == 0:
+        return 1.0
+    if n < 0:
+        x = 1 / x
+        n = -n
+    result = 1.0
+    for _ in range(n):
+        result *= x
+    return result
+
+def main():
+    x = float(input("Enter the value of x: "))
+    n = int(input("Enter the value of n: "))
+
+    result = power(x, n)
+
+    print(f"Result: {result:.6f}")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
 /*
 class Solution {
 public:
