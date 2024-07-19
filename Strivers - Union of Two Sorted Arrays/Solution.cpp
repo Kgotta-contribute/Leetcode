@@ -6,16 +6,16 @@ vector<int> FindUnion(int a1[], int a2[], int n, int m)
     vector<int> Union;
 
     for(int i=0; i<n; i++)
-        s.insert(a1[i]);
+        s.insert(a1[i]);        // s.insert(a1[9]) → s = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
     for(int i=0; i<m; i++)
-        s.insert(a2[i]);
+        s.insert(a2[i]);        // s.insert(a2[6]) → s = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
     for(auto &it : s)
-        Union.push_back(it);
+        Union.push_back(it);    // Union.push_back(it) → Union = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     return Union;
 }
 int main()
 {
-    int n = 10, m = 7;
+    int n = 10, m = 7;      // these are the sizes
     int a1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int a2[] = { 2, 3, 4,4,5,11,12};
     vector<int> Union = FindUnion(a1, a2, n, m);
@@ -61,6 +61,32 @@ public class Main {
 }
 
 
+
+
+// PYTHON
+
+def find_union(a1, a2):
+    # Use a set to store unique elements
+    union_set = set(a1) | set(a2)
+    
+    # Convert the set to a sorted list
+    union_list = sorted(union_set)
+    
+    return union_list
+
+def main():
+    n = 10
+    m = 7
+    a1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    a2 = [2, 3, 4, 4, 5, 11, 12]
+
+    union = find_union(a1, a2)
+
+    print("Union of a1 & a2 is:")
+    print(" ".join(map(str, union)))
+
+if __name__ == "__main__":
+    main()
 
 
 
