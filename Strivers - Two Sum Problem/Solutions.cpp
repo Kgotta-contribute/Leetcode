@@ -130,3 +130,40 @@ public class Main {
         System.out.println("Example 3 Output: [" + result3[0] + ", " + result3[1] + "]");
     }
 }
+
+
+
+
+
+// PYTHON
+
+class Solution:
+    def twoSum(self, nums, target):
+        map = {}
+        
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in map:
+                return [map[complement], i]
+            map[nums[i]] = i
+        
+        return [-1, -1]
+
+if __name__ == "__main__":
+    nums1 = [2, 7, 11, 15]
+    target1 = 9
+    solution1 = Solution()
+    result1 = solution1.twoSum(nums1, target1)
+    print(f"Example 1 Output: [{result1[0]}, {result1[1]}]")
+
+    nums2 = [3, 2, 4]
+    target2 = 6
+    solution2 = Solution()
+    result2 = solution2.twoSum(nums2, target2)
+    print(f"Example 2 Output: [{result2[0]}, {result2[1]}]")
+
+    nums3 = [3, 2, 1, 3]
+    target3 = 6
+    solution3 = Solution()
+    result3 = solution3.twoSum(nums3, target3)
+    print(f"Example 3 Output: [{result3[0]}, {result3[1]}]")
