@@ -49,7 +49,7 @@ int main() {
     
     // Test the threeSum function
     vector<int> nums = {-1, 0, 1, 2, -1, -4};
-    vector<vector<int>> result = solution.threeSum(nums);
+    vector<vector<int>> result = solution.threeSum(nums);ṇ
     
     // Print the results
     for (const vector<int>& triplet : result) {
@@ -112,3 +112,122 @@ int main() {
 // Result:
 
 // The result vector contains two unique triplets: { -1, -1, 2 } and { -1, 0, 1 }.
+
+
+
+
+
+
+
+// JAVA 
+
+import java.util.*;
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        int n = nums.length;
+        
+        // Sort the input array
+        Arrays.sort(nums);
+        
+        for (int i = 0; i < n - 2; ++i) {
+            // Skip duplicates
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            
+            int left = i + 1;
+            int right = n - 1;
+            
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+                
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    
+                    // Skip duplicates
+                    while (left < right && nums[left] == nums[left + 1]) left++;
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+                    
+                    left++;
+                    right--;
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        
+        // Test the threeSum function
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> result = solution.threeSum(nums);
+        
+        // Print the results
+        for (List<Integer> triplet : result) {
+            for (int num : triplet) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+// PYTHON
+
+class Solution:
+    def threeSum(self, nums):
+        result = []
+        nums.sort()
+        n = len(nums)
+        
+        for i in range(n - 2):
+            # Skip duplicates
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            
+            left = i + 1
+            right = n - 1
+            
+            while left < right:
+                sum = nums[i] + nums[left] + nums[right]
+                
+                if sum == 0:
+                    result.append([nums[i], nums[left], nums[right]])
+                    
+                    # Skip duplicates
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1
+                    
+                    left += 1
+                    right -= 1
+                elif sum < 0:
+                    left += 1
+                else:
+                    right -= 1
+        
+        return result
+
+# Test the threeSum function
+if __name__ == "__main__":
+    solution = Solution()
+    nums = [-1, 0, 1, 2, -1, -4]
+    result = solution.threeSum(nums)
+    
+    # Print the results
+    for triplet in result:
+        print(triplet)
