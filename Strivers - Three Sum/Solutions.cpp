@@ -231,3 +231,4 @@ if __name__ == "__main__":
     # Print the results
     for triplet in result:
         print(triplet)
+ 
