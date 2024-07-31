@@ -67,8 +67,7 @@ int main() {
 // TreeNode class definition
 class TreeNode {
     int val;
-    TreeNode left;
-    TreeNode right;
+    TreeNode left; TreeNode right;
     
     // Default constructor
     TreeNode() {
