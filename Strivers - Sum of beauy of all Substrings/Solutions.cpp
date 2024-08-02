@@ -14,11 +14,13 @@ int sumOfBeauty(string s) {
     int n = s.length();
     int result = 0;
     
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
+    {
         unordered_map<char, int> freq;
         int mostFreq = 0, leastFreq = n;
         
-        for (int j = i; j < n; j++) {
+        for (int j = i; j < n; j++) 
+        {
             freq[s[j]]++;
             mostFreq = max(mostFreq, freq[s[j]]);
             leastFreq = min(leastFreq, freq[s[j]]);
