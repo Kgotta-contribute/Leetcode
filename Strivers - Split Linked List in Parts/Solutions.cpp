@@ -215,3 +215,70 @@ public class Main {
 
 // PYTHON
 
+class ListNode:
+    def __init__(self, x=0, next=None):
+        self.val = x
+        self.next = next
+
+class Solution:
+    def split_list_to_parts(self, head, k):
+        # Count the length of the linked list
+        length = 0
+        current = head
+        while current:
+            length += 1
+            current = current.next
+        
+        # Calculate the size of each part and the number of extra nodes
+        part_size = length // k
+        extra_nodes = length % k
+        
+        result = []
+        current = head
+        for _ in range(k):
+            part_head = current
+            part_length = part_size + (1 if extra_nodes > 0 else 0)
+            
+            # Move to the end of the current part
+            for _ in range(part_length - 1):
+                if current:
+                    current = current.next
+            
+            # If there are extra nodes, move to the next node
+            if current:
+                next_node = current.next
+                current.next = None
+                current = next_node
+                extra_nodes -= 1
+            
+            result.append(part_head)
+        
+        return result
+
+def print_parts(parts):
+    for i, part in enumerate(parts):
+        print(f"Part {i + 1}: ", end="")
+        current = part
+        while current:
+            print(current.val, end=" -> ")
+            current = current.next
+        print("null")
+
+def main():
+    # Create the linked list 1 -> 2 -> 3 -> 4 -> 5
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+    head.next.next.next.next = ListNode(5)
+
+    k = 3
+
+    solution = Solution()
+    parts = solution.split_list_to_parts(head, k)
+
+    # Print each part of the split linked list
+    print_parts(parts)
+
+if __name__ == "__main__":
+    main()
