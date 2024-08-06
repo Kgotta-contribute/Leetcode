@@ -116,3 +116,102 @@ int main() {
 // Part 1: 1 -> 2 -> null
 // Part 2: 3 -> null
 // Part 3: 4 -> 5 -> null
+
+
+
+
+
+
+
+// JAVA
+
+import java.util.ArrayList;
+import java.util.List;
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+        this.val = 0;
+        this.next = null;
+    }
+
+    ListNode(int x) {
+        this.val = x;
+        this.next = null;
+    }
+
+    ListNode(int x, ListNode next) {
+        this.val = x;
+        this.next = next;
+    }
+}
+
+class Solution {
+    public List<ListNode> splitListToParts(ListNode head, int k) {
+        // Count the length of the linked list
+        int length = 0;
+        ListNode current = head;
+        while (current != null) {
+            length++;
+            current = current.next;
+        }
+        
+        // Calculate the size of each part and the number of extra nodes
+        int partSize = length / k;
+        int extraNodes = length % k;
+        
+        List<ListNode> result = new ArrayList<>();
+        current = head;
+        for (int i = 0; i < k; i++) {
+            ListNode partHead = current;
+            int currentPartSize = partSize + (extraNodes > 0 ? 1 : 0);
+            
+            // Move to the end of the current part
+            for (int j = 0; j < currentPartSize - 1; j++) {
+                if (current != null) {
+                    current = current.next;
+                }
+            }
+            
+            // If there are extra nodes, move to the next node
+            if (current != null) {
+                ListNode nextNode = current.next;
+                current.next = null;
+                current = nextNode;
+                extraNodes--;
+            }
+            
+            result.add(partHead);
+        }
+        
+        return result;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        int k = 3;
+
+        Solution solution = new Solution();
+        List<ListNode> parts = solution.splitListToParts(head, k);
+
+        // Print each part of the split linked list
+        for (int i = 0; i < parts.size(); i++) {
+            ListNode current = parts.get(i);
+            System.out.print("Part " + (
+
+
+
+
+
+
+// PYTHON
+
