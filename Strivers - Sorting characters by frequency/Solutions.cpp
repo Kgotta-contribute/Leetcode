@@ -3,8 +3,8 @@
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
-
-bool cmp(const std::pair<char, int>& a, const std::pair<char, int>& b) 
+#include <bits/stdc++.h>
+bool cmp(const pair<char, int>& a, const pair<char, int>& b) 
 {
     return a.second > b.second;
 }
@@ -13,47 +13,47 @@ bool cmp(const std::pair<char, int>& a, const std::pair<char, int>& b)
 // the frequency of a is greater than the frequency of b, indicating that a should 
 // come before b in the sorted order.
 
-std::string freqSort(std::string s) {
-    std::unordered_map<char, int> charFreq;
+string freqSort(string s) {
+    unordered_map<char, int> charFreq;
     for (char c : s) {
         charFreq[c]++;
     }
 
-    std::vector<std::pair<char, int>> charFreqPairs;
+    vector<pair<char, int>> charFreqPairs;
     for (const auto& entry : charFreq) {
         charFreqPairs.push_back(entry);
     }
 
-    std::sort(charFreqPairs.begin(), charFreqPairs.end(), cmp);
+    sort(charFreqPairs.begin(), charFreqPairs.end(), cmp);
 
-    std::string result;
+    string result;
     for (const auto& pair : charFreqPairs) {
-        result += std::string(pair.second, pair.first);
+        result += string(pair.second, pair.first);
     }
 
     return result;
 }
 
 int main() {
-    std::string input1 = "abcAbc";
-    std::string sortedString1 = freqSort(input1);
-    std::cout << "Sample Input 1: " << input1 << std::endl;
-    std::cout << "Sorted string by character frequency: " << sortedString1 << std::endl;
+    string input1 = "abcAbc";
+    string sortedString1 = freqSort(input1);
+    cout << "Sample Input 1: " << input1 << endl;
+    cout << "Sorted string by character frequency: " << sortedString1 << endl;
 
-    std::string input2 = "tree";
-    std::string sortedString2 = freqSort(input2);
-    std::cout << "Sample Input 2: " << input2 << std::endl;
-    std::cout << "Sorted string by character frequency: " << sortedString2 << std::endl;
+    string input2 = "tree";
+    string sortedString2 = freqSort(input2);
+    cout << "Sample Input 2: " << input2 << endl;
+    cout << "Sorted string by character frequency: " << sortedString2 << endl;
 
-    std::string input3 = "cccaaa";
-    std::string sortedString3 = freqSort(input3);
-    std::cout << "Sample Input 3: " << input3 << std::endl;
-    std::cout << "Sorted string by character frequency: " << sortedString3 << std::endl;
+    string input3 = "cccaaa";
+    string sortedString3 = freqSort(input3);
+    cout << "Sample Input 3: " << input3 << endl;
+    cout << "Sorted string by character frequency: " << sortedString3 << endl;
 
-    std::string input4 = "Aabb";
-    std::string sortedString4 = freqSort(input4);
-    std::cout << "Sample Input 4: " << input4 << std::endl;
-    std::cout << "Sorted string by character frequency: " << sortedString4 << std::endl;
+    string input4 = "Aabb";
+    string sortedString4 = freqSort(input4);
+    cout << "Sample Input 4: " << input4 << endl;
+    cout << "Sorted string by character frequency: " << sortedString4 << endl;
 
     return 0;
 }
