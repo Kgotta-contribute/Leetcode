@@ -1,45 +1,3 @@
-#include <iostream>
-#include <iomanip> // For setting decimal precision
-
-using namespace std;
-
-double power(double x, int n) {
-    if (n == 0) {
-        return 1.0;
-    }
-    if (n < 0) {
-        x = 1 / x;
-        n = -n;
-    }
-    double result = 1.0;
-    for (int i = 0; i < n; ++i) {
-        result *= x;
-    }
-    return result;
-}
-
-int main() {
-    double x;
-    int n;
-    cout << "Enter the value of x: ";
-    cin >> x;
-    cout << "Enter the value of n: ";
-    cin >> n;
-
-    double result = power(x, n);
-
-    cout << fixed << setprecision(6);
-    cout << "Result: " << result << endl;
-
-    return 0;
-}
-
-
-
-
-
-
-
 
 // JAVA
 
@@ -78,57 +36,79 @@ public class Main {
 
 
 
+
+
+#include <iostream>
+#include <iomanip> // For setting decimal precision
+
+using namespace std;
+
+double myPow(double x, int n) {
+    if (n == 0) {
+        return 1.0;
+    }
+    if (n < 0) {
+        x = 1 / x;
+        n = -n;
+    }
+    double result = 1.0;
+    for (int i = 0; i < n; ++i) {
+        result *= x;
+    }
+    return result;
+}
+
+int main() {
+    double x;
+    int n;
+    cout << "Enter the value of x: ";
+    cin >> x;
+    cout << "Enter the value of n: ";
+    cin >> n;
+
+    double result = myPow(x, n);
+
+    cout << fixed << setprecision(6);
+    cout << "Result: " << result << endl;
+
+    return 0;
+}
+
+
+
+
+
+
 // PYTHON
 
-def power(x, n):
-    if n == 0:
-        return 1.0
-    if n < 0:
-        x = 1 / x
-        n = -n
-    result = 1.0
-    for _ in range(n):
-        result *= x
-    return result
+class Solution:
+    def myPow(self, x: float, n: int) -> float: 
+        # Edge case: n is zero
+        if n == 0:
+            return 1.0
+        
+        # Handle negative exponents
+        if n < 0:
+            x = 1 / x
+            n = -n
+        
+        result = 1.0
+        # Fast exponentiation
+        while n > 0:
+            if n % 2 == 1:  # If n is odd
+                result *= x
+            x *= x  # Square the base
+            n //= 2  # Reduce n by half
+        
+        return result
 
 def main():
     x = float(input("Enter the value of x: "))
     n = int(input("Enter the value of n: "))
 
-    result = power(x, n)
+    result = myPow(x, n)
 
     print(f"Result: {result:.6f}")
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-/*
-class Solution {
-public:
-    double myPow(double x, int n) {
-        
-        if(n < 0) {
-            x = 1 / x;
-        } 
-        
-        long num = labs(n);
-        
-        double pow = 1;
-        
-        while(num){ // equivalent to while(num != 0)
-            if(num & 1) { // equivalent to if((num & 1) != 0)
-                pow *= x;
-            }
-            
-            x *= x;
-            num >>= 1;
-        }
-        
-        return pow;
-    }
-};
-*/
