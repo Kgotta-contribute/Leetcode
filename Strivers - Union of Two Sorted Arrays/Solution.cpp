@@ -1,33 +1,3 @@
- #include <bits/stdc++.h>
-using namespace std;
-vector<int> FindUnion(int a1[], int a2[], int n, int m)
-{
-    set<int> s;
-    vector<int> Union;
-
-    for(int i=0; i<n; i++)
-        s.insert(a1[i]);        // s.insert(a1[9]) → s = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-    for(int i=0; i<m; i++)
-        s.insert(a2[i]);        // s.insert(a2[6]) → s = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
-    for(auto &it : s)
-        Union.push_back(it);    // Union.push_back(it) → Union = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    return Union;
-}
-int main()
-{
-    int n = 10, m = 7;      // these are the sizes
-    int a1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int a2[] = { 2, 3, 4,4,5,11,12};
-    vector<int> Union = FindUnion(a1, a2, n, m);
-    cout<<"Union of a1 & a2 is : "<<endl;
-    for(auto &val : Union)
-        cout<<val<<" ";
-    return 0;
-}
-
-
-
-
 // JAVA
 
 import java.util.HashSet;
@@ -60,6 +30,36 @@ public class Main {
     }
 }
 
+
+
+// CPP
+
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> FindUnion(int a1[], int a2[], int n, int m)
+{
+    set<int> s;
+    vector<int> Union;
+
+    for(int i=0; i<n; i++)
+        s.insert(a1[i]);        // s.insert(a1[9]) → s = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    for(int i=0; i<m; i++)
+        s.insert(a2[i]);        // s.insert(a2[6]) → s = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+    for(auto &it : s)
+        Union.push_back(it);    // Union.push_back(it) → Union = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    return Union;
+}
+int main()
+{
+    int n = 10, m = 7;      // these are the sizes
+    int a1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int a2[] = { 2, 3, 4,4,5,11,12};
+    vector<int> Union = FindUnion(a1, a2, n, m);
+    cout<<"Union of a1 & a2 is : "<<endl;
+    for(auto &val : Union)
+        cout<<val<<" ";
+    return 0;
+}
 
 
 
