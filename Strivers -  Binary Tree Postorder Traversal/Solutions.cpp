@@ -2,6 +2,7 @@
 #include <vector>
 #include <stack>
 #include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 struct TreeNode {
@@ -15,13 +16,13 @@ struct TreeNode {
 
 class Solution {
 public:
-    std::vector<int> postorderTraversal(TreeNode* root) {
-        std::vector<int> result;
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> result;
         if (root == nullptr) {
             return result;
         }
         
-        std::stack<TreeNode*> nodeStack;
+        stack<TreeNode*> nodeStack;
         TreeNode* current = root;
         TreeNode* lastVisited = nullptr;
         
@@ -58,14 +59,14 @@ int main() {
     Solution solution;
 
     // Perform postorder traversal
-    std::vector<int> result = solution.postorderTraversal(root);
+    vector<int> result = solution.postorderTraversal(root);
 
     // Print the result
-    std::cout << "Postorder traversal: ";
+    cout << "Postorder traversal: ";
     for (int num : result) {
-        std::cout << num << " ";
+        cout << num << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
     // Clean up the memory
     // ...
