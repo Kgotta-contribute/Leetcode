@@ -1,3 +1,60 @@
+// JAVA
+public class Main {
+    static class TreeNode {
+        int val;
+        TreeNode left, right;
+
+        TreeNode(int x) {
+            val = x;
+            left = null;
+            right = null;
+        }
+    }
+
+    public static boolean isSymm(TreeNode root1, TreeNode root2) {
+        if (root1 == null && root2 == null) {
+            return true;
+        }
+        if (root1 == null || root2 == null) {
+            return false;
+        }
+        if (root1.val != root2.val) {
+            return false;
+        }
+        return isSymm(root1.left, root2.right) && isSymm(root1.right, root2.left);
+    }
+
+    public static boolean isSymm(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        return isSymm(root.left, root.right);
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(2);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(3);
+
+        if (isSymm(root)) {
+            System.out.println("The binary tree is symmetric");
+        } else {
+            System.out.println("The binary tree is not symmetric");
+        }
+
+        // No explicit memory management needed in Java as garbage collection handles it.
+    }
+}
+
+
+
+
+
+// CPP
 #include<iostream>
 using namespace std;
 
@@ -60,61 +117,6 @@ int main()
 
     return 0;
 }
-
-
-
-// JAVA
-public class Main {
-    static class TreeNode {
-        int val;
-        TreeNode left, right;
-
-        TreeNode(int x) {
-            val = x;
-            left = null;
-            right = null;
-        }
-    }
-
-    public static boolean isSymm(TreeNode root1, TreeNode root2) {
-        if (root1 == null && root2 == null) {
-            return true;
-        }
-        if (root1 == null || root2 == null) {
-            return false;
-        }
-        if (root1.val != root2.val) {
-            return false;
-        }
-        return isSymm(root1.left, root2.right) && isSymm(root1.right, root2.left);
-    }
-
-    public static boolean isSymm(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        return isSymm(root.left, root.right);
-    }
-
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(2);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(4);
-        root.right.left = new TreeNode(4);
-        root.right.right = new TreeNode(3);
-
-        if (isSymm(root)) {
-            System.out.println("The binary tree is symmetric");
-        } else {
-            System.out.println("The binary tree is not symmetric");
-        }
-
-        // No explicit memory management needed in Java as garbage collection handles it.
-    }
-}
-
 
 
 
