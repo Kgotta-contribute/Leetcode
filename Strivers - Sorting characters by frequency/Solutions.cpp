@@ -61,6 +61,39 @@ int main() {
 
 
 
+// JAVA
+import java.util.*;
+
+class Solution {
+    public String frequencySort(String s) {
+        // Step 1: Create a map to store the frequency of each character
+        Map<Character, Integer> charFreq = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            charFreq.put(c, charFreq.getOrDefault(c, 0) + 1);
+        }
+        
+        // Step 2: Create a list from the map entries
+        List<Map.Entry<Character, Integer>> charFreqPairs = new ArrayList<>(charFreq.entrySet());
+        
+        // Step 3: Sort the list by frequency (descending) and lexicographically if frequencies are the same
+        charFreqPairs.sort((a, b) -> {
+            if (b.getValue().equals(a.getValue())) {
+                return Character.compare(a.getKey(), b.getKey());
+            }
+            return b.getValue() - a.getValue();
+        });
+        
+        // Step 4: Build the resulting string based on sorted entries
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<Character, Integer> entry : charFreqPairs) {
+            result.append(String.valueOf(entry.getKey()).repeat(entry.getValue()));
+        }
+        
+        return result.toString();
+    }
+}
+
+
 
 
 // Sample Input 1: "abcAbc"

@@ -26,7 +26,6 @@ int subarrayWithMaxProduct(vector<int>& arr) {
 
     return result;
 }
-
 int main() {
     int n;
     cin >> n;
@@ -41,8 +40,39 @@ int main() {
 
     return 0;
 }
+/*
+Let's use the example array [2, 3, -2, 4].
 
+Initialization:
 
+max_product = 2
+min_product = 2
+result = 2
+Processing the array:
+
+Element 3:
+
+No negative number swap needed.
+max_product = max(3, 2 * 3) = max(3, 6) = 6
+min_product = min(3, 2 * 3) = min(3, 6) = 3
+result = max(2, 6) = 6
+Element -2:
+
+Swap max_product and min_product.
+After swap: max_product = 3, min_product = 6
+max_product = max(-2, 3 * -2) = max(-2, -6) = -2
+min_product = min(-2, 6 * -2) = min(-2, -12) = -12
+result = max(6, -2) = 6
+Element 4:
+
+No negative number swap needed.
+max_product = max(4, -2 * 4) = max(4, -8) = 4
+min_product = min(4, -12 * 4) = min(4, -48) = -48
+result = max(6, 4) = 6
+Final Result:
+
+result = 6
+*/
 
 
 
@@ -78,7 +108,6 @@ public class MaxProductSubarray {
 
         return result;
     }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

@@ -5,10 +5,8 @@ The beauty of a string is the difference in frequecies between the most freq & l
 
 
 // JAVA
-
 import java.util.HashMap;
 import java.util.Map;
-
 class Solution {
     public int beautySum(String s) {
         int n = s.length();
@@ -91,9 +89,9 @@ public:
                 
                 // Update minFreq considering only characters that appear in the substring
                 minFreq = n;
-                for (const auto& entry : freqMap) {
-                    if (entry.second > 0) {
-                        minFreq = min(minFreq, entry.second);
+                for (const auto& it : freqMap) {
+                    if (it.second > 0) {
+                        minFreq = min(minFreq, it.second);
                     }
                 }
                 
@@ -105,17 +103,16 @@ public:
         return totalBeauty;
     }
 };
-
-// int main() {
-//     Solution sol;
-//     string s1 = "aabcb";
-//     cout << "Sum of beauty of all substrings: " << sol.beautySum(s1) << endl;
+int main() {
+    Solution sol;
+    string s1 = "aabcb";
+    cout << "Sum of beauty of all substrings: " << sol.beautySum(s1) << endl;
     
-//     string s2 = "aabcbaa";
-//     cout << "Sum of beauty of all substrings: " << sol.beautySum(s2) << endl;
+    string s2 = "aabcbaa";
+    cout << "Sum of beauty of all substrings: " << sol.beautySum(s2) << endl;
     
-//     return 0;
-// }
+    return 0;
+}
 
 
 
