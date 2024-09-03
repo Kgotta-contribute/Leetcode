@@ -58,8 +58,8 @@ int main()
 
 
 
-// JAVA
 
+// JAVA
 import java.util.Scanner;
 
 public class SecondSmallestLargest {

@@ -1,3 +1,108 @@
+// JAVA
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        
+        boolean firstRowZero = false;
+        boolean firstColZero = false;
+        
+        // Check if the first row needs to be zeroed
+        for (int j = 0; j < n; j++) {
+            if (matrix[0][j] == 0) {
+                firstRowZero = true;
+                break;
+            }
+        }
+        
+        // Check if the first column needs to be zeroed
+        for (int i = 0; i < m; i++) {
+            if (matrix[i][0] == 0) {
+                firstColZero = true;
+                break;
+            }
+        }
+        
+        // Use the first row and column to mark zeros in the matrix
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+        
+        // Zero out cells based on marks in the first row and column
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        
+        // Zero out the first row if needed
+        if (firstRowZero) {
+            for (int j = 0; j < n; j++) {
+                matrix[0][j] = 0;
+            }
+        }
+        
+        // Zero out the first column if needed
+        if (firstColZero) {
+            for (int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
+
+    // Helper function to print the matrix
+    private static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int val : row) {
+                System.out.print(val + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        
+        int[][] matrix1 = {
+            {1, 1, 1},
+            {1, 0, 1},
+            {1, 1, 1}
+        };
+        System.out.println("Input Matrix 1:");
+        printMatrix(matrix1);
+
+        sol.setZeroes(matrix1);
+
+        System.out.println("\nOutput Matrix 1:");
+        printMatrix(matrix1);
+
+        int[][] matrix2 = {
+            {0, 1, 2, 0},
+            {3, 4, 5, 2},
+            {1, 3, 1, 5}
+        };
+        System.out.println("\nInput Matrix 2:");
+        printMatrix(matrix2);
+
+        sol.setZeroes(matrix2);
+
+        System.out.println("\nOutput Matrix 2:");
+        printMatrix(matrix2);
+    }
+}
+
+
+
+
+
+// CPP
 #include <iostream>
 #include <vector>
 #include <unordered_set>
@@ -20,10 +125,12 @@ void setMatrixZero(vector<vector<int>>& matrix)
     {
         for (int j = 0; j < n; ++j) 
         {
+            // Checks if the current element is zero.
+            // If zero, adds the row index i to zeroRows and the column index j to zeroCols.
             if (matrix[i][j] == 0) 
             {
-                zeroRows.insert(i);
-                zeroCols.insert(j);
+                zeroRows.insert(i); 
+                zeroCols.insert(j); 
             }
         }
     }
@@ -33,6 +140,7 @@ void setMatrixZero(vector<vector<int>>& matrix)
     {
         for (int j = 0; j < n; ++j) 
         {
+            // Checks if the current row i or column j is in the sets zeroRows or zeroCols. If true, sets matrix[i][j] to 0.
             if (zeroRows.find(i) != zeroRows.end() || zeroCols.find(j) != zeroCols.end()) 
             {
                 matrix[i][j] = 0;
@@ -75,3 +183,7 @@ int main() {
 
     return 0;
 }
+
+
+
+
