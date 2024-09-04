@@ -1,7 +1,67 @@
-#include <iostream>
-#include <vector>
+// JAVA
+class Solution {
+    public int search(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            
+            // Check if the middle element is the target
+            if (nums[mid] == target) {
+                return mid;
+            }
+            
+            // Determine which side is properly sorted
+            if (nums[left] <= nums[mid]) {  // Left side is sorted
+                if (nums[left] <= target && target < nums[mid]) {
+                    right = mid - 1;  // Target is in the left side
+                } else {
+                    left = mid + 1;   // Target is in the right side
+                }
+            } else {  // Right side is sorted
+                if (nums[mid] < target && target <= nums[right]) {
+                    left = mid + 1;  // Target is in the right side
+                } else {
+                    right = mid - 1; // Target is in the left side
+                }
+            }
+        }
+        
+        return -1;  // Target is not found
+    }
+    
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        
+        // Example 1
+        int[] nums1 = {4, 5, 6, 7, 0, 1, 2};
+        int target1 = 0;
+        System.out.println("Index of target " + target1 + ": " + sol.search(nums1, target1));  // Output: 4
+        
+        // Example 2
+        int[] nums2 = {4, 5, 6, 7, 0, 1, 2};
+        int target2 = 3;
+        System.out.println("Index of target " + target2 + ": " + sol.search(nums2, target2));  // Output: -1
+        
+        // Example 3
+        int[] nums3 = {1};
+        int target3 = 0;
+        System.out.println("Index of target " + target3 + ": " + sol.search(nums3, target3));  // Output: -1
+    }
+}
 
-int searchInRotatedSortedArray(std::vector<int>& arr, int target) {
+
+
+
+
+// CPP
+#include<iostream>
+#include<vector>
+#include<bits/stdc++.h>
+using namespace std;
+
+int searchInRotatedSortedArray(vector<int>& arr, int target) {
     int left = 0;
     int right = arr.size() - 1;
 
@@ -15,7 +75,7 @@ int searchInRotatedSortedArray(std::vector<int>& arr, int target) {
         if (arr[left] <= arr[mid]) {
             // Left half is sorted
 
-            if (arr[left] <= target && target < arr[mid]) {
+            if (arr[left] <= target && arr[mid] > target) {
                 right = mid - 1;
             } else {
                 left = mid + 1;
@@ -23,7 +83,7 @@ int searchInRotatedSortedArray(std::vector<int>& arr, int target) {
         } else {
             // Right half is sorted
 
-            if (arr[mid] < target && target <= arr[right]) {
+            if (arr[mid] < target && arr[right] >= target) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
@@ -35,17 +95,17 @@ int searchInRotatedSortedArray(std::vector<int>& arr, int target) {
 }
 
 int main() {
-    std::vector<int> arr1 = {4, 5, 6, 7, 0, 1, 2, 3};
+    vector<int> arr1 = {4, 5, 6, 7, 0, 1, 2, 3};
     int target1 = 0;
 
     int result1 = searchInRotatedSortedArray(arr1, target1);
-    std::cout << "Result: " << result1 << "\n";
+    cout << "Result: " << result1 << "\n";
 
-    std::vector<int> arr2 = {4, 5, 6, 7, 0, 1, 2};
+    vector<int> arr2 = {4, 5, 6, 7, 0, 1, 2};
     int target2 = 3;
 
     int result2 = searchInRotatedSortedArray(arr2, target2);
-    std::cout << "Result: " << result2 << "\n";
+    cout << "Result: " << result2 << "\n";
 
     return 0;
 }
@@ -55,7 +115,7 @@ int main() {
 // #include <iostream>
 // #include <vector>
 
-// int searchInRotatedArray(const std::vector<int>& nums, int target) {
+// int searchInRotatedArray(const vector<int>& nums, int target) {
 //     for (int i = 0; i < nums.size(); ++i) {
 //         if (nums[i] == target) {
 //             return i; // Found the target element at index i
@@ -65,15 +125,15 @@ int main() {
 // }
 
 // int main() {
-//     std::vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
+//     vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
 //     int target = 0;
 
 //     int result = searchInRotatedArray(nums, target);
 
 //     if (result != -1) {
-//         std::cout << "Element " << target << " found at index " << result << std::endl;
+//         cout << "Element " << target << " found at index " << result << endl;
 //     } else {
-//         std::cout << "Element not found in the array." << std::endl;
+//         cout << "Element not found in the array." << endl;
 //     }
 
 //     return 0;

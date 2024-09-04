@@ -52,7 +52,7 @@ public:
 void inorderTraversal(TreeNode* root) {
     if (root) {
         inorderTraversal(root->left);
-        std::cout << root->val << " ";
+        cout << root->val << " ";
         inorderTraversal(root->right);
     }
 }
@@ -74,16 +74,91 @@ int main() {
     TreeNode* result2 = solution.searchBST(root, val2);
 
     // Print the inorder traversal of the results
-    std::cout << "Inorder Traversal of Result 1: ";
+    cout << "Inorder Traversal of Result 1: ";
     inorderTraversal(result1);
-    std::cout << std::endl;
+    cout << endl;
 
-    std::cout << "Inorder Traversal of Result 2: ";
+    cout << "Inorder Traversal of Result 2: ";
     inorderTraversal(result2);
-    std::cout << std::endl;
+    cout << endl;
 
     return 0;
 }
+
+
+
+
+// JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
+        // Start from the root node.
+        TreeNode current = root;
+        
+        while (current != null) {
+            if (current.val == val) {
+                return current; // Found the node with the given value.
+            } else if (current.val < val) {
+                current = current.right; // Move to the right subtree.
+            } else {
+                current = current.left; // Move to the left subtree.
+            }
+        }
+        
+        return null; // Node with val not found in the BST.
+    }
+    
+    public static void main(String[] args) {
+        // Example tree creation
+        TreeNode root = new TreeNode(4);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(7);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+
+        // Search for values in the tree
+        int val1 = 2;
+        int val2 = 5;
+        
+        Solution solution = new Solution();
+        TreeNode result1 = solution.searchBST(root, val1);
+        TreeNode result2 = solution.searchBST(root, val2);
+
+        // Print the inorder traversal of the results
+        System.out.print("Inorder Traversal of Result 1: ");
+        inorderTraversal(result1);
+        System.out.println();
+
+        System.out.print("Inorder Traversal of Result 2: ");
+        inorderTraversal(result2);
+        System.out.println();
+    }
+    
+    // Function to print the tree (inorder traversal)
+    private static void inorderTraversal(TreeNode root) {
+        if (root != null) {
+            inorderTraversal(root.left);
+            System.out.print(root.val + " ");
+            inorderTraversal(root.right);
+        }
+    }
+}
+
+
 
 
 
