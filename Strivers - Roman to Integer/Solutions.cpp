@@ -129,3 +129,47 @@ public class Main {
         System.out.println("Integer value: " + result);
     }
 }
+
+
+
+
+// Python
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        # Define the mapping of Roman numerals to their integer values
+        roman_to_int = {
+            'M': 1000,
+            'D': 500,
+            'C': 100,
+            'L': 50,
+            'X': 10,
+            'V': 5,
+            'I': 1
+        }
+        
+        # Initialize sum to 0
+        total = 0
+        
+        # Loop through the Roman numeral string
+        for i in range(len(s) - 1):
+            # Compare the value of the current numeral with the next numeral
+            if roman_to_int[s[i]] < roman_to_int[s[i + 1]]:
+                # If the current numeral is less than the next numeral, subtract its value
+                total -= roman_to_int[s[i]]
+            else:
+                # Otherwise, add its value
+                total += roman_to_int[s[i]]
+        
+        # Add the value of the last numeral
+        total += roman_to_int[s[-1]]
+        
+        return total
+
+#Example usage
+solution = Solution()
+
+#Example 1
+print(solution.romanToInt("LVIII"))  # Output: 58
+
+#Example 2
+print(solution.romanToInt("MCMXCIV"))  # Output: 1994
