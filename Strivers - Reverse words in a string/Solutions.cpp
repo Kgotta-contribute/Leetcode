@@ -63,7 +63,9 @@ public:
         return result;
     }
 };
-/*Non-Negative: size_t is unsigned, so it inherently avoids negative values, which is useful for sizes and indices.
+/*
+Instead of size_t we can use 'int' but for below reason use size_t
+Non-Negative: size_t is unsigned, so it inherently avoids negative values, which is useful for sizes and indices.
 Size and Range: size_t is designed to be able to represent the maximum size of any object in memory. 
 This is useful when dealing with large data structures.*/
 
