@@ -1,37 +1,28 @@
-#include <iostream>
-#include <algorithm>
-#include <sstream>
+// JAVA CODE :- 
 
-using namespace std;
+// Input String: " the quick brown fox "
+// After s.trim(): "the quick brown fox" -> removves spaces
+// After split("\\s+"): ["the", "quick", "brown", "fox"] -> puts into token
 
-string reverseWords(string s) 
-{
-    stringstream ss(s);         //The stringstream is used to tokenize the input string into words.
-    ////word to store each word during iteration, and reversedString to store the final reversed strin
-    string word, reversedString; 
-    //This is a loop that reads each word from the stringstream and continues until there are no more words. 
-    //The >> operator is used to extract words from the stringstream.
-    while (ss >> word) 
-    {
-        //each word is concatenated with the existing reversedString, along with a space. 
-        reversedString = word + " " + reversedString;
+class Solution {
+    public String reverseWords(String s) {
+        // Trim the string and split it by one or more spaces
+        String[] words = s.trim().split("\\s+");
+
+        // Use a StringBuilder to build the result
+        StringBuilder reversed = new StringBuilder();
+
+        // Iterate from the end of the array to the beginning
+        for (int i = words.length - 1; i >= 0; i--) {
+            if (i < words.length - 1) {
+                reversed.append(" ");  // Add a space between words
+            }
+            reversed.append(words[i]);
+        }
+
+        return reversed.toString();
     }
-    reversedString.pop_back(); // Remove the extra space at the end
-    return reversedString;
 }
-
-int main() 
-{
-    string inputString;
-    cout << "Enter a string: ";
-    getline(cin, inputString);
-
-    string reversedString = reverseWords(inputString);
-    cout << "Output: " << reversedString << endl;
-
-    return 0;
-}
-
 
 
 
@@ -39,30 +30,53 @@ int main()
 
 
 
+// CPP
+#include <string>
+#include <sstream>
+#include <vector>
+#include <algorithm>
 
+class Solution {
+public:
+    string reverseWords(string s) {
+        istringstream iss(s);
+        vector<string> words;
+        string word;
 
-// JAVA CODE :- 
-
-import java.util.Scanner;
-
-public class ReverseWords {
-    public static String reverseWords(String s) {
-        Scanner sc = new Scanner(s);
-        String word, reversedString = "";
-        while (sc.hasNext()) {
-            word = sc.next();
-            reversedString = word + " " + reversedString;
+        // Step 1: Read words from the string stream
+        while (iss >> word) {
+            words.push_back(word);
         }
-        reversedString = reversedString.trim(); // Remove the extra space at the end
-        return reversedString;
-    }
 
-    public static void main(String[] args) {
-        Scanner inputScanner = new Scanner(System.in);
-        System.out.print("Enter a string: ");
-        String inputString = inputScanner.nextLine();
+        // Step 2: Reverse the words in the vector
+        reverse(words.begin(), words.end());
 
-        String reversedString = reverseWords(inputString);
-        System.out.println("Output: " + reversedString);
+        // Step 3: Join the reversed words into a single string
+        string result;
+        for (size_t i = 0; i < words.size(); ++i) {
+            if (i > 0) {
+                result += " ";
+            }
+            result += words[i];
+        }
+
+        return result;
     }
-}
+};
+/*Non-Negative: size_t is unsigned, so it inherently avoids negative values, which is useful for sizes and indices.
+Size and Range: size_t is designed to be able to represent the maximum size of any object in memory. 
+This is useful when dealing with large data structures.*/
+
+
+
+
+// Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        # Step 1: Trim leading and trailing spaces and split by any whitespace
+        words = s.strip().split()
+        
+        # Step 2: Reverse the list of words and join them with a single space
+        reversed_words = ' '.join(reversed(words))
+        
+        return reversed_words
