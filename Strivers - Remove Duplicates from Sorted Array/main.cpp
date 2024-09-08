@@ -1,6 +1,6 @@
 #include<iostream>
-
 using namespace std;
+
 int removeDuplicates(int arr[], int n)
 {
   int i = 0;

@@ -7,7 +7,7 @@
 class Solution {
     public String reverseWords(String s) {
         // Trim the string and split it by one or more spaces
-        String[] words = s.trim().split("\\s+");
+        String words[] = s.trim().split("\\s+");
 
         // Use a StringBuilder to build the result
         StringBuilder reversed = new StringBuilder();

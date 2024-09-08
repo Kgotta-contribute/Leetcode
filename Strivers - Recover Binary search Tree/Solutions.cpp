@@ -1,3 +1,51 @@
+// java
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private TreeNode first = null;
+    private TreeNode second = null;
+    private TreeNode prev = new TreeNode(Integer.MIN_VALUE);
+
+    public void recoverTree(TreeNode root) {
+        // Perform in-order traversal to find the nodes that are swapped
+        inOrderTraversal(root);
+        
+        // Swap the values of the two nodes to recover the BST
+        if (first != null && second != null) {
+            int temp = first.val;
+            first.val = second.val;
+            second.val = temp;
+        }
+    }
+
+    private void inOrderTraversal(TreeNode node) {
+        if (node == null) return;
+        
+        // Traverse the left subtree
+        inOrderTraversal(node.left);
+        
+        // Find nodes that are out of order
+        if (prev != null && node.val < prev.val) {
+            if (first == null) {
+                // First anomaly found
+                first = prev;
+            }
+            // Second anomaly found (can be same node as first or another node)
+            second = node;
+        }
+        
+        // Update previous node to current node
+        prev = node;
+        
+        // Traverse the right subtree
+        inOrderTraversal(node.right);
+    }
+}
+
+
+
+// cpp
 #include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
