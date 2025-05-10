@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
- // little complex because needs more smartness for being efficient otherwise easy
+ //  little complex because needs more smartness for being efficient otherwise easy
 class Solution {
 public:
     string addBinary(string a, string b) {
