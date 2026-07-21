@@ -65,22 +65,21 @@ public:
 // PYTHON
 
 class Solution:
-    def myPow(self, x: float, n: int) -> float: 
-        # Edge case: n is zero
+    def myPow(self, base: float, n: int) -> float:
         if n == 0:
             return 1.0
         
-        # Handle negative exponents
+        power = abs(n)
+
         if n < 0:
-            x = 1 / x
-            n = -n
+            base = 1 / base
         
         result = 1.0
-        # Fast exponentiation
-        while n > 0:
-            if n % 2 == 1:  # If n is odd
-                result *= x
-            x *= x  # Square the base
-            n //= 2  # Reduce n by half
+        
+        while power > 0:
+            if power & 1:      # if power is odd, Last bit = 1 → power is odd, Last bit = 0 → power is even. power & 1 checks the last bit of the binary representation.
+                result *= base
+            base *= base            # square the base
+            power >>= 1         # halve the exponent, bitwise operator 1010(ie. 10 ) will be made to 101 (ie. 5) fast way to do half. Right shift by one to do half 
         
         return result
